@@ -1,0 +1,106 @@
+{
+  "project_info": {
+    "project_number": "1034767577164",
+    "project_id": "lets-ride-2021",
+    "storage_bucket": "lets-ride-2021.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1034767577164:android:f62b62eeec048ecfb604e9",
+        "android_client_info": {
+          "package_name": "com.example.customerapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1034767577164-r38ju7fq95v9jrc7judemfoser5jt6s1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.customerapp",
+            "certificate_hash": "e1de89a33860562f2fe08f2cb4965c0f37c1de3c"
+          }
+        },
+        {
+          "client_id": "1034767577164-s715v0m626mgg0433ml61bnl9g3orvqq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.customerapp",
+            "certificate_hash": "901c38ec39f0bb5d7843b602fb6acac45d5f1cee"
+          }
+        },
+        {
+          "client_id": "1034767577164-ld449a8uor9l5g4j6e434pabvmonkmk8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCZiHiLONJecLhxsr2dIULqndSyr0YWpJw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1034767577164-ld449a8uor9l5g4j6e434pabvmonkmk8.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1034767577164-re3s6k0mih0f1j1a0ttt9r74783eeffa.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.customerapp"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1034767577164:android:98ead523a4d9a379b604e9",
+        "android_client_info": {
+          "package_name": "com.example.restaurant_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1034767577164-khjun0lri2mlfgsn6su9s80o25bks7qg.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.restaurant_app",
+            "certificate_hash": "901c38ec39f0bb5d7843b602fb6acac45d5f1cee"
+          }
+        },
+        {
+          "client_id": "1034767577164-ld449a8uor9l5g4j6e434pabvmonkmk8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCZiHiLONJecLhxsr2dIULqndSyr0YWpJw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1034767577164-ld449a8uor9l5g4j6e434pabvmonkmk8.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1034767577164-re3s6k0mih0f1j1a0ttt9r74783eeffa.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.customerapp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
