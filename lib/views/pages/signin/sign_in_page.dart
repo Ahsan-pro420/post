@@ -18,8 +18,8 @@ class SignIn extends StatefulWidget {
 }
 
 class _SignInState extends State<SignIn> {
-  String code = '+92';
-  String phoneNumber = "+923043110089";
+  String code = "+92";
+  String phoneNumber = "";
 
   TextEditingController controllernumber = TextEditingController();
   @override

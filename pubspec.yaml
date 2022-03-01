@@ -34,10 +34,10 @@ dependencies:
   flutter_balloon_slider: ^0.1.1
   carousel_slider: ^4.0.0
   shared_preferences: 
-  firebase_core: 
+  firebase_core: ^1.13.1
   # firebase_messaging:
   # firebase_database:
-  firebase_auth: 
+  firebase_auth: ^3.3.9
   pinput: ^2.0.2
   # dio:
   flutter_polyline_points:

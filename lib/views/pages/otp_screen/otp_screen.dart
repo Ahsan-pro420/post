@@ -24,12 +24,30 @@ class OTPSCREEN extends StatefulWidget {
 }
 
 class _OTPSCREENState extends State<OTPSCREEN> {
+  final GlobalKey<ScaffoldState> _scaffoldkey = GlobalKey<ScaffoldState>();
+  // late String _verificationCode;
   late String _verificationCode;
   final TextEditingController _pinPutController = TextEditingController();
+  final TextEditingController _pin1Controller = TextEditingController();
+  final TextEditingController _pin2Controller = TextEditingController();
+  final TextEditingController _pin3Controller = TextEditingController();
+  final TextEditingController _pin4Controller = TextEditingController();
+  final TextEditingController _pin5Controller = TextEditingController();
+  final TextEditingController _pin6Controller = TextEditingController();
   final FocusNode _pinPutFocusNode = FocusNode();
   FirebaseMessaging _firebaseMessaging = FirebaseMessaging.instance;
   String? _firebaseToken;
   String? _currentTimeZone;
+
+  // String ppin = _pin1Controller.text.toString();
+  String pin1 = "";
+  String pin2 = "";
+  String pin3 = "";
+  String pin4 = "";
+  String pin5 = "";
+  String pin6 = "";
+
+  String pppin = "";
 
   final BoxDecoration pinPutDecoration = BoxDecoration(
     // color: const Color.fromRGBO(255, 255, 255, 1),
@@ -43,53 +61,59 @@ class _OTPSCREENState extends State<OTPSCREEN> {
   void initState() {
     super.initState();
     _verifyPhone();
-    _firebaseMessaging.getToken().then((token) {
-      _firebaseToken = token;
-    });
-    _gettimezone();
+
+    //remove comment
+
+    // _firebaseMessaging.getToken().then((token) {
+    //   _firebaseToken = token;
+    // }
+    // );
+    // _gettimezone();
   }
 
-  @override
-  void dispose() {
-    super.dispose();
-  }
+  // @override
+  // void dispose() {
+  //   super.dispose();
+  // }
 
-  _setUserToken(apikey, profileImage, phoneNumber, name, email, login) async {
-    SharedPreferences pref = await SharedPreferences.getInstance();
-    pref.setString("user_api_token", apikey);
-    pref.setString('phone_number', phoneNumber);
-    pref.setString('profile_image', profileImage);
-    pref.setString('name', name);
-    pref.setString('email', email);
-    pref.setString('login', login);
-  }
+  // _setUserToken(apikey, profileImage, phoneNumber, name, email, login) async {
+  //   SharedPreferences pref = await SharedPreferences.getInstance();
+  //   pref.setString("user_api_token", apikey);
+  //   pref.setString('phone_number', phoneNumber);
+  //   pref.setString('profile_image', profileImage);
+  //   pref.setString('name', name);
+  //   pref.setString('email', email);
+  //   pref.setString('login', login);
+  // }
 
-  _gettimezone() async {
-    _currentTimeZone = await FlutterNativeTimezone.getLocalTimezone();
-    // return _currentTimeZone;
-  }
+  // _gettimezone() async {
+  //   _currentTimeZone = await FlutterNativeTimezone.getLocalTimezone();
+  //   // return _currentTimeZone;
+  // }
 
   _verifyPhone() async {
     await FirebaseAuth.instance.verifyPhoneNumber(
-      phoneNumber: '${widget.phone}',
+      phoneNumber: widget.phone,
+      // phoneNumber: "+923072647909",
       verificationCompleted: (PhoneAuthCredential credential) async {
         await FirebaseAuth.instance
             .signInWithCredential(credential)
             .then((value) async {
           if (value.user != null) {
-            final String _currentTimeZone =
-                await FlutterNativeTimezone.getLocalTimezone();
-            _firebaseMessaging.getToken().then((token) {
-              ScaffoldMessenger.of(context)
-                  .showSnackBar(SnackBar(content: Text("/$token")));
-            });
-            ScaffoldMessenger.of(context)
-                .showSnackBar(SnackBar(content: Text("/$_currentTimeZone")));
+            //remove comment
+            // final String _currentTimeZone =
+            //     await FlutterNativeTimezone.getLocalTimezone();
+            // _firebaseMessaging.getToken().then((token) {
+            //   ScaffoldMessenger.of(context)
+            //       .showSnackBar(SnackBar(content: Text("/$token")));
+            // });
+            // ScaffoldMessenger.of(context)
+            //     .showSnackBar(SnackBar(content: Text("/$_currentTimeZone")));
 
-            // Navigator.pushAndRemoveUntil(
-            //     context,
-            //     MaterialPageRoute(builder: (context) => HomeScreen()),
-            //     (route) => false);
+            Navigator.pushAndRemoveUntil(
+                context,
+                MaterialPageRoute(builder: (context) => OrderPage()),
+                (route) => false);
           }
         });
       },
@@ -114,147 +138,298 @@ class _OTPSCREENState extends State<OTPSCREEN> {
     );
   }
 
+  // _verifyPhone() async {
+  //   await FirebaseAuth.instance.verifyPhoneNumber(
+  //       phoneNumber: widget.phone,
+  //       verificationCompleted: null,
+  //       verificationFailed: null,
+  //       codeSent:
+
+  //        (String verificationID, int resendToken) {
+  //         setState(() {
+  //           _verificationCode = verificationID;
+  //         });
+  //       },
+  //       codeAutoRetrievalTimeout: (String verificationID) {
+  //         setState(() {
+  //           _verificationCode = verificationID;
+  //         });
+  //       },
+  //       timeout: Duration(seconds:60));
+  // }
+
   @override
   Widget build(BuildContext context) {
     final _height = MediaQuery.of(context).size.height;
     return Scaffold(
-      body: SingleChildScrollView(
+        body: SingleChildScrollView(
+            child: Column(children: [
+      Container(
+        height: displayHeight(context) / 2,
+        width: displayWidth(context),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(30.0),
+        ),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Container(
-              height: displayHeight(context) / 2,
-              width: displayWidth(context),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(30.0),
+            SizedBox(
+              height: displayHeight(context) / 2 * 0.066,
+            ),
+            Image(image: AssetImage("assets/images/vendor_logo.png")),
+            SizedBox(
+              height: displayHeight(context) / 2 * 0.066,
+            ),
+            Text(
+              "OTP VERIFICATION" + widget.phone,
+              style: GoogleFonts.ubuntu(
+                textStyle: Constants.otp1style(),
               ),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  SizedBox(
-                    height: displayHeight(context) / 2 * 0.066,
-                  ),
-                  Image(image: AssetImage("assets/images/vendor_logo.png")),
-                  SizedBox(
-                    height: displayHeight(context) / 2 * 0.066,
-                  ),
-                  Text(
-                    "OTP VERIFICATION" + widget.phone,
-                    style: GoogleFonts.ubuntu(
-                      textStyle: Constants.otp1style(),
-                    ),
-                    textAlign: TextAlign.center,
-                  ),
-                  SizedBox(
-                    height: displayHeight(context) / 2 * 0.045,
-                  ),
-                  Text(
-                    "Enter the OTP sent on your phone number",
-                    style: GoogleFonts.ubuntu(
-                      textStyle: TextStyle(
-                        fontWeight: FontWeight.w400,
-                        fontSize: 15,
-                        color: Colors.black.withOpacity(0.5),
-                      ),
-                    ),
-                  ),
-                ],
+              textAlign: TextAlign.center,
+            ),
+            SizedBox(
+              height: displayHeight(context) / 2 * 0.045,
+            ),
+            Text(
+              "Enter the OTP sent on your phone number",
+              style: GoogleFonts.ubuntu(
+                textStyle: TextStyle(
+                  fontWeight: FontWeight.w400,
+                  fontSize: 15,
+                  color: Colors.black.withOpacity(0.5),
+                ),
               ),
             ),
-            //second part of the screen
+          ],
+        ),
+      ),
+      //second part of the screen
+      Container(
+        child: Column(
+          // crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            SizedBox(
+              height: displayHeight(context) / 2 * 0.12,
+            ),
             Container(
+              margin: EdgeInsets.only(left: 20, right: 20),
               child: Column(
-                // crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  SizedBox(
-                    height: displayHeight(context) / 2 * 0.12,
-                  ),
                   Container(
                     margin: EdgeInsets.only(left: 20, right: 20),
                     child: Column(
                       children: [
-//remove comment
-                        Padding(
-                          padding: EdgeInsets.only(
-                            left: 2.0,
-                          ),
-                          child: Pinput(
-                            // obscureText: "*",
-                            // hintText: "*",
-                            fieldsCount: 6,
-                            textStyle: const TextStyle(
-                                fontSize: 25.0, color: Colors.black),
-                            eachFieldWidth: 40.0,
-                            eachFieldHeight: 55.0,
-                            focusNode: _pinPutFocusNode,
-                            controller: _pinPutController,
-                            submittedFieldDecoration: pinPutDecoration,
-                            selectedFieldDecoration: pinPutDecoration,
-                            followingFieldDecoration: pinPutDecoration,
-                            pinAnimationType: PinAnimationType.fade,
-                            onSubmit: (pin) async {
-                              try {
-                                await FirebaseAuth.instance
-                                    .signInWithCredential(
-                                        PhoneAuthProvider.credential(
-                                            verificationId: _verificationCode,
-                                            smsCode: pin))
-                                    .then((value) async {
-                                  if (value.user != null) {
-                                    await _firebaseMessaging
-                                        .getToken()
-                                        .then((token) {
-                                      ScaffoldMessenger.of(context)
-                                          .showSnackBar(SnackBar(
-                                              content: Text("$token")));
-                                    });
-                                    ScaffoldMessenger.of(context).showSnackBar(
-                                        SnackBar(
-                                            content:
-                                                Text("$_currentTimeZone")));
-                                    final services = AuthApiServices();
-                                    services.apiCallLogin(
-                                      {
-                                        "phone_number": '${widget.phone}',
-                                        "fcm_token": '$_firebaseToken',
-                                        "timezone": '$_currentTimeZone',
-                                        "latitude": '56565.54',
-                                        "longitude": '65465.164'
-                                      },
-                                    ).then((value) {
-                                      if (value.apitoken != null) {
-                                        _setUserToken(
-                                          value.apitoken!,
-                                          value.profileImage!,
-                                          value.phoneNumber!,
-                                          value.name,
-                                          value.email,
-                                          value.isLogin,
-                                        );
-                                        Navigator.pushAndRemoveUntil(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: (context) =>
-                                                    OrderPage()),
-                                            (route) => false);
-                                      } else {
-                                        ScaffoldMessenger.of(context)
-                                            .showSnackBar(SnackBar(
-                                                content: Text(value.error!)));
-                                      }
-                                    });
-                                  }
-                                });
-                              } catch (e) {
-                                FocusScope.of(context).unfocus();
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                    SnackBar(content: Text('invalid OTP')));
-                                // _scaffoldkey.currentState!.showSnackBar(
-                                // SnackBar(content: Text('invalid OTP')));
-                              }
-                            },
-                          ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Container(
+                              width: displayWidth(context) * 0.12,
+                              child: TextField(
+                                controller: _pin1Controller,
+                                onChanged: (value) {
+                                  pin1 = value;
+                                },
+                                maxLength: 1,
+                                maxLengthEnforced: true,
+                                decoration: InputDecoration(
+                                    border: UnderlineInputBorder(),
+                                    hintText: "*",
+                                    hintTextDirection: TextDirection.ltr,
+                                    counterText: ''),
+                                textAlign: TextAlign.center,
+                              ),
+                            ),
+                            // SizedBox(width: 10,),
+                            Container(
+                              width: displayWidth(context) * 0.12,
+                              child: TextFormField(
+                                controller: _pin2Controller,
+                                onChanged: (value) {
+                                  pin2 = value;
+                                },
+                                maxLength: 1,
+                                decoration: InputDecoration(
+                                    border: UnderlineInputBorder(),
+                                    hintText: "*",
+                                    hintTextDirection: TextDirection.ltr,
+                                    counterText: ''),
+                                textAlign: TextAlign.center,
+                              ),
+                            ),
+                            // SizedBox(width: 10,),
+                            Container(
+                              width: displayWidth(context) * 0.12,
+                              child: TextFormField(
+                                controller: _pin3Controller,
+                                onChanged: (value) {
+                                  pin3 = value;
+                                },
+                                maxLength: 1,
+                                decoration: InputDecoration(
+                                    border: UnderlineInputBorder(),
+                                    hintText: "*",
+                                    hintTextDirection: TextDirection.ltr,
+                                    counterText: ''),
+                                textAlign: TextAlign.center,
+                              ),
+                            ),
+                            // SizedBox(width: 10,),
+                            Container(
+                              width: displayWidth(context) * 0.12,
+                              child: TextFormField(
+                                controller: _pin4Controller,
+                                onChanged: (value) {
+                                  pin4 = value;
+                                },
+                                maxLength: 1,
+                                decoration: InputDecoration(
+                                    border: UnderlineInputBorder(),
+                                    hintText: "*",
+                                    hintTextDirection: TextDirection.ltr,
+                                    counterText: ''),
+                                textAlign: TextAlign.center,
+                              ),
+                            ),
+                            Container(
+                              width: displayWidth(context) * 0.12,
+                              child: TextFormField(
+                                controller: _pin5Controller,
+                                onChanged: (value) {
+                                  pin5 = value;
+                                },
+                                maxLength: 1,
+                                decoration: InputDecoration(
+                                    border: UnderlineInputBorder(),
+                                    hintText: "*",
+                                    hintTextDirection: TextDirection.ltr,
+                                    counterText: ''),
+                                textAlign: TextAlign.center,
+                              ),
+                            ),
+                            Container(
+                              width: displayWidth(context) * 0.12,
+                              child: TextFormField(
+                                controller: _pin6Controller,
+                                onChanged: (value) {
+                                  pin6 = value;
+                                },
+                                maxLength: 1,
+                                decoration: InputDecoration(
+                                    border: UnderlineInputBorder(),
+                                    hintText: "*",
+                                    hintTextDirection: TextDirection.ltr,
+                                    counterText: ''),
+                                textAlign: TextAlign.center,
+                              ),
+                            ),
+                          ],
                         ),
+                        // SizedBox(
+                        //   height: displayHeight(context) / 2 * 0.05,
+                        // ),
+                        // Container(
+                        //   margin: EdgeInsets.only(right: 28),
+                        //   child: Row(
+                        //     mainAxisAlignment: MainAxisAlignment.end,
+                        //     children: [
+                        //       Text(
+                        //         "Didn't received code?",
+                        //         style: TextStyle(color: Colors.black),
+                        //       ),
+                        //       SizedBox(
+                        //         width: 5,
+                        //       ),
+                        //       Text(
+                        //         "resend",
+                        //         style: TextStyle(color: Colors.red),
+                        //       ),
+                        //     ],
+                        //   ),
+                        // )
+//remove comment
+                        // Padding(
+                        //   padding: EdgeInsets.only(
+                        //     left: 2.0,
+                        //   ),
+                        //   child: PinPut(
+                        //     // obscureText: "*",
+                        //     // hintText: "*",
+                        //     fieldsCount: 6,
+                        //     textStyle: const TextStyle(
+                        //         fontSize: 25.0, color: Colors.black),
+                        //     eachFieldWidth: 40.0,
+                        //     eachFieldHeight: 55.0,
+                        //     focusNode: _pinPutFocusNode,
+                        //     controller: _pinPutController,
+                        //     submittedFieldDecoration: pinPutDecoration,
+                        //     selectedFieldDecoration: pinPutDecoration,
+                        //     followingFieldDecoration: pinPutDecoration,
+                        //     pinAnimationType: PinAnimationType.fade,
+                        //     onSubmit: (pin) async {
+                        //       try {
+                        //         await FirebaseAuth.instance
+                        //             .signInWithCredential(
+                        //                 PhoneAuthProvider.credential(
+                        //                     verificationId: _verificationCode,
+                        //                     smsCode: pin))
+                        //             .then((value) async {
+                        //           if (value.user != null) {
+                        //             await _firebaseMessaging
+                        //                 .getToken()
+                        //                 .then((token) {
+                        //               ScaffoldMessenger.of(context)
+                        //                   .showSnackBar(SnackBar(
+                        //                       content: Text("$token")));
+                        //             });
+                        //             ScaffoldMessenger.of(context).showSnackBar(
+                        //                 SnackBar(
+                        //                     content:
+                        //                         Text("$_currentTimeZone")));
+                        //             final services = AuthApiServices();
+                        //             services.apiCallLogin(
+                        //               {
+                        //                 "phone_number": '${widget.phone}',
+                        //                 "fcm_token": '$_firebaseToken',
+                        //                 "timezone": '$_currentTimeZone',
+                        //                 "latitude": '56565.54',
+                        //                 "longitude": '65465.164'
+                        //               },
+                        //             ).then((value) {
+                        //               if (value.apitoken != null) {
+                        //                 _setUserToken(
+                        //                   value.apitoken!,
+                        //                   value.profileImage!,
+                        //                   value.phoneNumber!,
+                        //                   value.name,
+                        //                   value.email,
+                        //                   value.isLogin,
+                        //                 );
+                        //                 Navigator.pushAndRemoveUntil(
+                        //                     context,
+                        //                     MaterialPageRoute(
+                        //                         builder: (context) =>
+                        //                             OrderPage()),
+                        //                     (route) => false);
+                        //               } else {
+                        //                 ScaffoldMessenger.of(context)
+                        //                     .showSnackBar(SnackBar(
+                        //                         content: Text(value.error!)));
+                        //               }
+                        //             });
+                        //           }
+                        //         });
+                        //       } catch (e) {
+                        //         FocusScope.of(context).unfocus();
+                        //         ScaffoldMessenger.of(context).showSnackBar(
+                        //             SnackBar(content: Text('invalid OTP')));
+                        //         // _scaffoldkey.currentState!.showSnackBar(
+                        //         // SnackBar(content: Text('invalid OTP')));
+                        //       }
+                        //     },
+                        //   ),
+                        // ),
+
                         SizedBox(
                           height: displayHeight(context) / 2 * 0.05,
                         ),
@@ -293,11 +468,38 @@ class _OTPSCREENState extends State<OTPSCREEN> {
                       height: _height * 0.066,
                       width: displayWidth(context) * 0.9,
                       highlightColor: Constants.black_light,
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => OrderPage()),
-                        );
+                      onPressed: () async {
+                        pppin = pin1 + pin2 + pin3 + pin4 + pin5 + pin6;
+                        print(pppin);
+
+                        // (pppin) async {
+                        try {
+                          await FirebaseAuth.instance
+                              .signInWithCredential(
+                                  PhoneAuthProvider.credential(
+                                      verificationId: _verificationCode,
+                                      smsCode: pppin))
+                              .then((value) async {
+                            if (value.user != null) {
+                              Navigator.pushAndRemoveUntil(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => OrderPage()),
+                                  (route) => false);
+                            }
+                          });
+                        } catch (e) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(content: Text('Invalid OTP.')));
+                          // FocusScope.of(context).unfocus();
+                          // _scaffoldkey.currentState
+                          //     .showSnackBar(SnackBar(content: Text('invalid OTP')));
+                        }
+
+                        // Navigator.push(
+                        //   context,
+                        //   MaterialPageRoute(builder: (context) => OrderPage()),
+                        // );
                       },
                       textStyle: TextStyle(),
                     ),
@@ -308,6 +510,6 @@ class _OTPSCREENState extends State<OTPSCREEN> {
           ],
         ),
       ),
-    );
+    ])));
   }
 }
