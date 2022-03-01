@@ -465,34 +465,34 @@ class _OTPSCREENState extends State<OTPSCREEN> {
                         // ),
 // pin put
 
-                        // Pinput(
-                        //   length: 6,
-                        //   defaultPinTheme: PinTheme(
-                        //     width: 56,
-                        //     height: 56,
-                        //     textStyle: TextStyle(
-                        //         fontSize: 20,
-                        //         color: Color.fromRGBO(30, 60, 87, 1),
-                        //         fontWeight: FontWeight.w600),
-                        //     decoration: BoxDecoration(
-                        //       border: Border.all(
-                        //           color: Color.fromRGBO(234, 239, 243, 1)),
-                        //       borderRadius: BorderRadius.circular(20),
-                        //     ),
-                        //   ),
-                        //   focusedPinTheme: defaultPinTheme.copyDecorationWith(
-                        //     border: Border.all(
-                        //         color: Color.fromRGBO(114, 178, 238, 1)),
-                        //     borderRadius: BorderRadius.circular(8),
-                        //   ),
-                        //   // submittedPinTheme: defaultPinTheme(
-                        //   //   decoration: defaultPinTheme.decoration.copyWith(
-                        //   //     color: Color.fromRGBO(234, 239, 243, 1),
-                        //   //   ),
-                        //   // ),
-                        //   showCursor: true,
-                        //   onCompleted: (pin) => print(pin),
-                        // ),
+                        Pinput(
+                          length: 6,
+                          defaultPinTheme: PinTheme(
+                            width: 56,
+                            height: 56,
+                            textStyle: TextStyle(
+                                fontSize: 20,
+                                color: Color.fromRGBO(30, 60, 87, 1),
+                                fontWeight: FontWeight.w600),
+                            decoration: BoxDecoration(
+                              border: Border.all(
+                                  color: Color.fromRGBO(234, 239, 243, 1)),
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                          ),
+                          focusedPinTheme: defaultPinTheme.copyDecorationWith(
+                            border: Border.all(
+                                color: Color.fromARGB(255, 144, 156, 168)),
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          // submittedPinTheme: defaultPinTheme(
+                          //   decoration: defaultPinTheme.decoration.copyWith(
+                          //     color: Color.fromRGBO(234, 239, 243, 1),
+                          //   ),
+                          // ),
+                          showCursor: true,
+                          onCompleted: (pin) => print(pin),
+                        ),
 
                         SizedBox(
                           height: displayHeight(context) / 2 * 0.05,
