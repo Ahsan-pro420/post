@@ -4,6 +4,7 @@ import 'package:restaurant_app/Theme/Theme.dart';
 import 'package:restaurant_app/utills/Displaywidth.dart';
 import 'package:restaurant_app/views/pages/category/uploadcategoryinfo.dart';
 import 'package:restaurant_app/views/pages/category/uploadsubcategoryinfo.dart';
+import 'package:restaurant_app/views/widgets/drawer_widget.dart';
 import 'package:restaurant_app/views/widgets/tab_bar_view.dart';
 
 class CategoryPage extends StatefulWidget {
@@ -17,6 +18,9 @@ class _CategoryPageState extends State<CategoryPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: Drawer(
+        child: Drawer_widget(context), // drawer widget
+      ),
       body: SingleChildScrollView(
         child: Container(
           height: displayHeight(context) - kBottomNavigationBarHeight,

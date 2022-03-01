@@ -389,6 +389,9 @@ class _OTPSCREENState extends State<OTPSCREEN> {
                         //   child: PinPut(
                         //     // obscureText: "*",
                         //     // hintText: "*",
+                        //child: Pinput(
+                        // obscureText: "*",
+                        // hintText: "*",
                         //     fieldsCount: 6,
                         //     textStyle: const TextStyle(
                         //         fontSize: 25.0, color: Colors.black),
@@ -485,11 +488,11 @@ class _OTPSCREENState extends State<OTPSCREEN> {
                                 color: Color.fromARGB(255, 144, 156, 168)),
                             borderRadius: BorderRadius.circular(8),
                           ),
-                          // submittedPinTheme: defaultPinTheme(
-                          //   decoration: defaultPinTheme.decoration.copyWith(
-                          //     color: Color.fromRGBO(234, 239, 243, 1),
-                          //   ),
-                          // ),
+                          submittedPinTheme: defaultPinTheme.copyWith(
+                            decoration: defaultPinTheme.decoration?.copyWith(
+                              color: Color.fromRGBO(234, 239, 243, 1),
+                            ),
+                          ),
                           showCursor: true,
                           onCompleted: (pin) => print(pin),
                         ),

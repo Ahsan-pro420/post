@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:restaurant_app/Theme/Theme.dart';
 import 'package:restaurant_app/utills/Displaywidth.dart';
+import 'package:restaurant_app/views/widgets/drawer_widget.dart';
 import 'package:restaurant_app/views/widgets/tab_bar_view.dart';
 
 class Earning extends StatefulWidget {
@@ -15,6 +16,9 @@ class _EarningState extends State<Earning> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // drawer: Drawer(
+      //   child: Drawer_widget(context),
+      // ),
       body: Container(
         height: displayHeight(context) - kBottomNavigationBarHeight,
         width: displayWidth(context),
@@ -26,7 +30,11 @@ class _EarningState extends State<Earning> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    Image.asset("assets/images/Menu.png"),
+                    GestureDetector(
+                      onTap: () => (Drawer_widget(context)),
+                      child: Image.asset("assets/images/Menu.png"),
+                    ),
+                    // Image.asset("assets/images/Menu.png"),
                     SizedBox(
                       width: displayWidth(context) * 0.25,
                     ),
