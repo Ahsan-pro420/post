@@ -48,6 +48,39 @@ class _OTPSCREENState extends State<OTPSCREEN> {
   String pin6 = "";
 
   String pppin = "";
+  PinTheme defaultPinTheme = PinTheme(
+    width: 56,
+    height: 56,
+    textStyle: TextStyle(
+        fontSize: 20,
+        color: Color.fromRGBO(30, 60, 87, 1),
+        fontWeight: FontWeight.w600),
+    decoration: BoxDecoration(
+      border: Border.all(color: Color.fromRGBO(234, 239, 243, 1)),
+      borderRadius: BorderRadius.circular(20),
+    ),
+  );
+
+  // final defaultPinTheme = PinTheme(
+  //     width: 56,
+  //     height: 56,
+  //     textStyle: TextStyle(fontSize: 20, color: Color.fromRGBO(30, 60, 87, 1), fontWeight: FontWeight.w600),
+  //     decoration: BoxDecoration(
+  //       border: Border.all(color: Color.fromRGBO(234, 239, 243, 1)),
+  //       borderRadius: BorderRadius.circular(20),
+  //     ),
+  //   );
+
+  //   final focusedPinTheme = defaultPinTheme.copyDecorationWith(
+  //     border: Border.all(color: Color.fromRGBO(114, 178, 238, 1)),
+  //     borderRadius: BorderRadius.circular(8),
+  //   );
+
+  //   final submittedPinTheme = defaultPinTheme.copyWith(
+  //     decoration: defaultPinTheme.decoration.copyWith(
+  //       color: Color.fromRGBO(234, 239, 243, 1),
+  //     ),
+  //   );
 
   final BoxDecoration pinPutDecoration = BoxDecoration(
     // color: const Color.fromRGBO(255, 255, 255, 1),
@@ -57,6 +90,7 @@ class _OTPSCREENState extends State<OTPSCREEN> {
       // color: const Color.fromRGBO(126, 203, 224, 1),
     ),
   );
+
   @override
   void initState() {
     super.initState();
@@ -428,6 +462,36 @@ class _OTPSCREENState extends State<OTPSCREEN> {
                         //       }
                         //     },
                         //   ),
+                        // ),
+// pin put
+
+                        // Pinput(
+                        //   length: 6,
+                        //   defaultPinTheme: PinTheme(
+                        //     width: 56,
+                        //     height: 56,
+                        //     textStyle: TextStyle(
+                        //         fontSize: 20,
+                        //         color: Color.fromRGBO(30, 60, 87, 1),
+                        //         fontWeight: FontWeight.w600),
+                        //     decoration: BoxDecoration(
+                        //       border: Border.all(
+                        //           color: Color.fromRGBO(234, 239, 243, 1)),
+                        //       borderRadius: BorderRadius.circular(20),
+                        //     ),
+                        //   ),
+                        //   focusedPinTheme: defaultPinTheme.copyDecorationWith(
+                        //     border: Border.all(
+                        //         color: Color.fromRGBO(114, 178, 238, 1)),
+                        //     borderRadius: BorderRadius.circular(8),
+                        //   ),
+                        //   // submittedPinTheme: defaultPinTheme(
+                        //   //   decoration: defaultPinTheme.decoration.copyWith(
+                        //   //     color: Color.fromRGBO(234, 239, 243, 1),
+                        //   //   ),
+                        //   // ),
+                        //   showCursor: true,
+                        //   onCompleted: (pin) => print(pin),
                         // ),
 
                         SizedBox(
