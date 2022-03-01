@@ -1,5 +1,4 @@
 // import 'dart:html';
-
 import 'package:flutter/material.dart';
 // import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -14,6 +13,7 @@ import 'package:restaurant_app/views/pages/orderHistory/orderHistory.dart';
 import 'package:restaurant_app/views/widgets/tabButton.dart';
 // import 'package:restaurant_app/views/widgets/progress_status_bar_widget.dart';
 import 'package:restaurant_app/views/widgets/tab_bar_view.dart';
+import 'package:restaurant_app/views/widgets/drawer_widget.dart';
 
 class OrderPage extends StatefulWidget {
   const OrderPage({Key? key}) : super(key: key);
@@ -55,189 +55,191 @@ class _OrderPageState extends State<OrderPage> with TickerProviderStateMixin {
     return Scaffold(
       key: _scaffoldKey,
       drawer: Drawer(
-        child: ListView(padding: EdgeInsets.all(10.0),
-            // children: _listViewData
-            //     .map((data) => ListTile(
-            //           title: Text(data),
-            //         ))
-            //     .toList(),
-            children: [
-              Padding(
-                  padding: const EdgeInsets.only(top: 150.0),
-                  child: Container(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        GestureDetector(
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => AccountSetting()),
-                            );
-                          },
-                          child: Row(
-                            // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              // Image(image: AssetImage("assets/images/Wallet.png")),
-                              SizedBox(
-                                width: 10,
-                              ),
-                              Text("Account Setting",
-                                  style: GoogleFonts.ubuntu(
-                                      textStyle: TextStyle(
-                                    fontWeight: FontWeight.w500,
-                                    fontSize: 17,
-                                    color: Colors.black,
-                                  ))),
-                              // SizedBox(
-                              //   width: 20,
-                              // ),
-                              // Text("\$87.00",
-                              //     style: GoogleFonts.ubuntu(
-                              //         textStyle: TextStyle(
-                              //       fontWeight: FontWeight.w500,
-                              //       fontSize: 17,
-                              //       color: Colors.red,
-                              //     ))),
-                            ],
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.only(bottom: 5),
-                        ),
-                        Container(
-                          margin: EdgeInsets.only(left: 5, right: 5),
-                          child: Divider(
-                            color: Colors.grey[100],
-                            thickness: 2,
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.only(bottom: 10),
-                        ),
-                        // 2nd
-                        GestureDetector(
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => OrdersHistory()),
-                            );
-                          },
-                          child: Row(
-                            // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              // Image(image: AssetImage("assets/images/Bag.png")),
-                              SizedBox(
-                                width: 10,
-                              ),
-                              Text("Order History",
-                                  style: GoogleFonts.ubuntu(
-                                      textStyle: TextStyle(
-                                    fontWeight: FontWeight.w500,
-                                    fontSize: 17,
-                                    color: Colors.black,
-                                  ))),
-                            ],
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.only(bottom: 10),
-                        ),
-                        Container(
-                          margin: EdgeInsets.only(left: 5.0, right: 5.0),
-                          child: Divider(
-                            color: Colors.grey[100],
-                            thickness: 2,
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.only(bottom: 10),
-                        ),
+        child: Drawer_widget(context),
+        // created a drawer widget,comment out the whole code of drawer.
+        // child: ListView(padding: EdgeInsets.all(10.0),
+        //     // children: _listViewData
+        //     //     .map((data) => ListTile(
+        //     //           title: Text(data),
+        //     //         ))
+        //     //     .toList(),
+        //     children: [
+        //       Padding(
+        //           padding: const EdgeInsets.only(top: 150.0),
+        //           child: Container(
+        //             child: Column(
+        //               crossAxisAlignment: CrossAxisAlignment.start,
+        //               children: [
+        //                 GestureDetector(
+        //                   onTap: () {
+        //                     Navigator.push(
+        //                       context,
+        //                       MaterialPageRoute(
+        //                           builder: (context) => AccountSetting()),
+        //                     );
+        //                   },
+        //                   child: Row(
+        //                     // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        //                     children: [
+        //                       // Image(image: AssetImage("assets/images/Wallet.png")),
+        //                       SizedBox(
+        //                         width: 10,
+        //                       ),
+        //                       Text("Account Setting",
+        //                           style: GoogleFonts.ubuntu(
+        //                               textStyle: TextStyle(
+        //                             fontWeight: FontWeight.w500,
+        //                             fontSize: 17,
+        //                             color: Colors.black,
+        //                           ))),
+        //                       // SizedBox(
+        //                       //   width: 20,
+        //                       // ),
+        //                       // Text("\$87.00",
+        //                       //     style: GoogleFonts.ubuntu(
+        //                       //         textStyle: TextStyle(
+        //                       //       fontWeight: FontWeight.w500,
+        //                       //       fontSize: 17,
+        //                       //       color: Colors.red,
+        //                       //     ))),
+        //                     ],
+        //                   ),
+        //                 ),
+        //                 Padding(
+        //                   padding: EdgeInsets.only(bottom: 5),
+        //                 ),
+        //                 Container(
+        //                   margin: EdgeInsets.only(left: 5, right: 5),
+        //                   child: Divider(
+        //                     color: Colors.grey[100],
+        //                     thickness: 2,
+        //                   ),
+        //                 ),
+        //                 Padding(
+        //                   padding: EdgeInsets.only(bottom: 10),
+        //                 ),
+        //                 // 2nd
+        //                 GestureDetector(
+        //                   onTap: () {
+        //                     Navigator.push(
+        //                       context,
+        //                       MaterialPageRoute(
+        //                           builder: (context) => OrdersHistory()),
+        //                     );
+        //                   },
+        //                   child: Row(
+        //                     // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        //                     children: [
+        //                       // Image(image: AssetImage("assets/images/Bag.png")),
+        //                       SizedBox(
+        //                         width: 10,
+        //                       ),
+        //                       Text("Order History",
+        //                           style: GoogleFonts.ubuntu(
+        //                               textStyle: TextStyle(
+        //                             fontWeight: FontWeight.w500,
+        //                             fontSize: 17,
+        //                             color: Colors.black,
+        //                           ))),
+        //                     ],
+        //                   ),
+        //                 ),
+        //                 Padding(
+        //                   padding: EdgeInsets.only(bottom: 10),
+        //                 ),
+        //                 Container(
+        //                   margin: EdgeInsets.only(left: 5.0, right: 5.0),
+        //                   child: Divider(
+        //                     color: Colors.grey[100],
+        //                     thickness: 2,
+        //                   ),
+        //                 ),
+        //                 Padding(
+        //                   padding: EdgeInsets.only(bottom: 10),
+        //                 ),
 
-                        // 3rd
-                        GestureDetector(
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => CategoryPage()),
-                            );
-                          },
-                          child: Row(
-                            // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              // Image(image: AssetImage("assets/images/Bag.png")),
-                              SizedBox(
-                                width: 10,
-                              ),
-                              Text("Category",
-                                  style: GoogleFonts.ubuntu(
-                                      textStyle: TextStyle(
-                                    fontWeight: FontWeight.w500,
-                                    fontSize: 17,
-                                    color: Colors.black,
-                                  ))),
-                            ],
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.only(bottom: 10),
-                        ),
-                        Container(
-                          margin: EdgeInsets.only(left: 5.0, right: 5.0),
-                          child: Divider(
-                            color: Colors.grey[100],
-                            thickness: 2,
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.only(bottom: 10),
-                        ),
-                        // 4th
-                        GestureDetector(
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => Earning()),
-                            );
-                          },
-                          child: Row(
-                            // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              // Image(image: AssetImage("assets/images/Bag.png")),
-                              SizedBox(
-                                width: 10,
-                              ),
-                              Text("Earnings",
-                                  style: GoogleFonts.ubuntu(
-                                      textStyle: TextStyle(
-                                    fontWeight: FontWeight.w500,
-                                    fontSize: 17,
-                                    color: Colors.black,
-                                  ))),
-                            ],
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.only(bottom: 10),
-                        ),
-                        Container(
-                          margin: EdgeInsets.only(left: 5.0, right: 5.0),
-                          child: Divider(
-                            color: Colors.grey[100],
-                            thickness: 2,
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.only(bottom: 10),
-                        ),
-                      ],
-                    ),
-                  ))
-            ]),
+        //                 // 3rd
+        //                 GestureDetector(
+        //                   onTap: () {
+        //                     Navigator.push(
+        //                       context,
+        //                       MaterialPageRoute(
+        //                           builder: (context) => CategoryPage()),
+        //                     );
+        //                   },
+        //                   child: Row(
+        //                     // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        //                     children: [
+        //                       // Image(image: AssetImage("assets/images/Bag.png")),
+        //                       SizedBox(
+        //                         width: 10,
+        //                       ),
+        //                       Text("Category",
+        //                           style: GoogleFonts.ubuntu(
+        //                               textStyle: TextStyle(
+        //                             fontWeight: FontWeight.w500,
+        //                             fontSize: 17,
+        //                             color: Colors.black,
+        //                           ))),
+        //                     ],
+        //                   ),
+        //                 ),
+        //                 Padding(
+        //                   padding: EdgeInsets.only(bottom: 10),
+        //                 ),
+        //                 Container(
+        //                   margin: EdgeInsets.only(left: 5.0, right: 5.0),
+        //                   child: Divider(
+        //                     color: Colors.grey[100],
+        //                     thickness: 2,
+        //                   ),
+        //                 ),
+        //                 Padding(
+        //                   padding: EdgeInsets.only(bottom: 10),
+        //                 ),
+        //                 // 4th
+        //                 GestureDetector(
+        //                   onTap: () {
+        //                     Navigator.push(
+        //                       context,
+        //                       MaterialPageRoute(
+        //                           builder: (context) => Earning()),
+        //                     );
+        //                   },
+        //                   child: Row(
+        //                     // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        //                     children: [
+        //                       // Image(image: AssetImage("assets/images/Bag.png")),
+        //                       SizedBox(
+        //                         width: 10,
+        //                       ),
+        //                       Text("Earnings",
+        //                           style: GoogleFonts.ubuntu(
+        //                               textStyle: TextStyle(
+        //                             fontWeight: FontWeight.w500,
+        //                             fontSize: 17,
+        //                             color: Colors.black,
+        //                           ))),
+        //                     ],
+        //                   ),
+        //                 ),
+        //                 Padding(
+        //                   padding: EdgeInsets.only(bottom: 10),
+        //                 ),
+        //                 Container(
+        //                   margin: EdgeInsets.only(left: 5.0, right: 5.0),
+        //                   child: Divider(
+        //                     color: Colors.grey[100],
+        //                     thickness: 2,
+        //                   ),
+        //                 ),
+        //                 Padding(
+        //                   padding: EdgeInsets.only(bottom: 10),
+        //                 ),
+        //               ],
+        //             ),
+        //           ))
+        //     ]),
       ),
       body: Container(
         height: displayHeight(context) - kBottomNavigationBarHeight,
@@ -844,7 +846,8 @@ class _OrderPageState extends State<OrderPage> with TickerProviderStateMixin {
   }
 }
 
-Widget orderr(context, int id, double price) {
+Widget orderr(
+    context, int id, double price, var SubName, var Address, var Picture) {
   return Container(
     height: displayHeight(context) / 4.3,
     width: displayWidth(context),
@@ -890,7 +893,7 @@ Widget orderr(context, int id, double price) {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                "Sub-Category Name",
+                "$SubName",
                 style: Constants.ordersubcategory(),
               ),
               Text("1x", style: Constants.ordersubcategory()),
@@ -901,7 +904,7 @@ Widget orderr(context, int id, double price) {
           alignment: Alignment.centerLeft,
           width: displayWidth(context) * 0.78,
           child: Text(
-            "10 Paya Lebar Rd, #B1-14 PLQ Mall, Singapore 409057",
+            "$Address",
             style: GoogleFonts.ubuntu(
                 textStyle: TextStyle(
                     fontSize: 14,
@@ -917,7 +920,7 @@ Widget orderr(context, int id, double price) {
           ),
           child: Row(
             children: [
-              Image.asset("assets/images/timeCircle.png"),
+              Image.asset("$Picture"),
               Text(
                 "26-06-2021, 11:00 PM",
                 style: GoogleFonts.ubuntu(

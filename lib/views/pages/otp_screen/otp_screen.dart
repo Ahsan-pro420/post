@@ -174,87 +174,87 @@ class _OTPSCREENState extends State<OTPSCREEN> {
                     child: Column(
                       children: [
 //remove comment
-                        Padding(
-                          padding: EdgeInsets.only(
-                            left: 2.0,
-                          ),
-                          child: Pinput(
-                            // obscureText: "*",
-                            // hintText: "*",
-                            fieldsCount: 6,
-                            textStyle: const TextStyle(
-                                fontSize: 25.0, color: Colors.black),
-                            eachFieldWidth: 40.0,
-                            eachFieldHeight: 55.0,
-                            focusNode: _pinPutFocusNode,
-                            controller: _pinPutController,
-                            submittedFieldDecoration: pinPutDecoration,
-                            selectedFieldDecoration: pinPutDecoration,
-                            followingFieldDecoration: pinPutDecoration,
-                            pinAnimationType: PinAnimationType.fade,
-                            onSubmit: (pin) async {
-                              try {
-                                await FirebaseAuth.instance
-                                    .signInWithCredential(
-                                        PhoneAuthProvider.credential(
-                                            verificationId: _verificationCode,
-                                            smsCode: pin))
-                                    .then((value) async {
-                                  if (value.user != null) {
-                                    await _firebaseMessaging
-                                        .getToken()
-                                        .then((token) {
-                                      ScaffoldMessenger.of(context)
-                                          .showSnackBar(SnackBar(
-                                              content: Text("$token")));
-                                    });
-                                    ScaffoldMessenger.of(context).showSnackBar(
-                                        SnackBar(
-                                            content:
-                                                Text("$_currentTimeZone")));
-                                    final services = AuthApiServices();
-                                    services.apiCallLogin(
-                                      {
-                                        "phone_number": '${widget.phone}',
-                                        "fcm_token": '$_firebaseToken',
-                                        "timezone": '$_currentTimeZone',
-                                        "latitude": '56565.54',
-                                        "longitude": '65465.164'
-                                      },
-                                    ).then((value) {
-                                      if (value.apitoken != null) {
-                                        _setUserToken(
-                                          value.apitoken!,
-                                          value.profileImage!,
-                                          value.phoneNumber!,
-                                          value.name,
-                                          value.email,
-                                          value.isLogin,
-                                        );
-                                        Navigator.pushAndRemoveUntil(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: (context) =>
-                                                    OrderPage()),
-                                            (route) => false);
-                                      } else {
-                                        ScaffoldMessenger.of(context)
-                                            .showSnackBar(SnackBar(
-                                                content: Text(value.error!)));
-                                      }
-                                    });
-                                  }
-                                });
-                              } catch (e) {
-                                FocusScope.of(context).unfocus();
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                    SnackBar(content: Text('invalid OTP')));
-                                // _scaffoldkey.currentState!.showSnackBar(
-                                // SnackBar(content: Text('invalid OTP')));
-                              }
-                            },
-                          ),
-                        ),
+                        // Padding(
+                        //   padding: EdgeInsets.only(
+                        //     left: 2.0,
+                        //   ),
+                        //child: Pinput(
+                        // obscureText: "*",
+                        // hintText: "*",
+                        //     fieldsCount: 6,
+                        //     textStyle: const TextStyle(
+                        //         fontSize: 25.0, color: Colors.black),
+                        //     eachFieldWidth: 40.0,
+                        //     eachFieldHeight: 55.0,
+                        //     focusNode: _pinPutFocusNode,
+                        //     controller: _pinPutController,
+                        //     submittedFieldDecoration: pinPutDecoration,
+                        //     selectedFieldDecoration: pinPutDecoration,
+                        //     followingFieldDecoration: pinPutDecoration,
+                        //     pinAnimationType: PinAnimationType.fade,
+                        //     onSubmit: (pin) async {
+                        //       try {
+                        //         await FirebaseAuth.instance
+                        //             .signInWithCredential(
+                        //                 PhoneAuthProvider.credential(
+                        //                     verificationId: _verificationCode,
+                        //                     smsCode: pin))
+                        //             .then((value) async {
+                        //           if (value.user != null) {
+                        //             await _firebaseMessaging
+                        //                 .getToken()
+                        //                 .then((token) {
+                        //               ScaffoldMessenger.of(context)
+                        //                   .showSnackBar(SnackBar(
+                        //                       content: Text("$token")));
+                        //             });
+                        //             ScaffoldMessenger.of(context).showSnackBar(
+                        //                 SnackBar(
+                        //                     content:
+                        //                         Text("$_currentTimeZone")));
+                        //             final services = AuthApiServices();
+                        //             services.apiCallLogin(
+                        //               {
+                        //                 "phone_number": '${widget.phone}',
+                        //                 "fcm_token": '$_firebaseToken',
+                        //                 "timezone": '$_currentTimeZone',
+                        //                 "latitude": '56565.54',
+                        //                 "longitude": '65465.164'
+                        //               },
+                        //             ).then((value) {
+                        //               if (value.apitoken != null) {
+                        //                 _setUserToken(
+                        //                   value.apitoken!,
+                        //                   value.profileImage!,
+                        //                   value.phoneNumber!,
+                        //                   value.name,
+                        //                   value.email,
+                        //                   value.isLogin,
+                        //                 );
+                        //                 Navigator.pushAndRemoveUntil(
+                        //                     context,
+                        //                     MaterialPageRoute(
+                        //                         builder: (context) =>
+                        //                             OrderPage()),
+                        //                     (route) => false);
+                        //               } else {
+                        //                 ScaffoldMessenger.of(context)
+                        //                     .showSnackBar(SnackBar(
+                        //                         content: Text(value.error!)));
+                        //               }
+                        //             });
+                        //           }
+                        //         });
+                        //       } catch (e) {
+                        //         FocusScope.of(context).unfocus();
+                        //         ScaffoldMessenger.of(context).showSnackBar(
+                        //             SnackBar(content: Text('invalid OTP')));
+                        //         // _scaffoldkey.currentState!.showSnackBar(
+                        //         // SnackBar(content: Text('invalid OTP')));
+                        //       }
+                        //     },
+                        //   ),
+                        // ),
                         SizedBox(
                           height: displayHeight(context) / 2 * 0.05,
                         ),
