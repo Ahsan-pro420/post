@@ -13,12 +13,14 @@ class Earning extends StatefulWidget {
 }
 
 class _EarningState extends State<Earning> {
+  GlobalKey<ScaffoldState> _scaffoldKey2 = GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // drawer: Drawer(
-      //   child: Drawer_widget(context),
-      // ),
+      key: _scaffoldKey2,
+      drawer: Drawer(
+        child: Drawer_widget(context),
+      ),
       body: Container(
         height: displayHeight(context) - kBottomNavigationBarHeight,
         width: displayWidth(context),
@@ -30,10 +32,12 @@ class _EarningState extends State<Earning> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    GestureDetector(
-                      onTap: () => (Drawer_widget(context)),
-                      child: Image.asset("assets/images/Menu.png"),
-                    ),
+                    IconButton(
+                        icon: Image.asset("assets/images/Menu.png"),
+                        // icon: Icon(Icons.menu, color: Color(0xFF1f186f),),
+                        onPressed: () {
+                          _scaffoldKey2.currentState!.openDrawer();
+                        }),
                     // Image.asset("assets/images/Menu.png"),
                     SizedBox(
                       width: displayWidth(context) * 0.25,

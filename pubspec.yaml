@@ -80,6 +80,7 @@ flutter:
     - assets/images/foodimages/left_arrow.png
     - assets/images/foodimages/gradient_image.png
     - assets/images/foodimages/timeicon.png
+    - assets/images/foodimages/
     - assets/images/Menu.png
     - assets/images/timeCircle.png
     - assets/images/redCircle.png

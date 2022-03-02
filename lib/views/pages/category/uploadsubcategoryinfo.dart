@@ -99,11 +99,11 @@ class _SubCategoryInfoState extends State<SubCategoryInfo> {
           return SafeArea(
               child: Wrap(
             children: [
-              GestureDetector(
-                  onTap: () {
-                    Navigator.pop(context);
-                  },
-                  child: Text("Close")),
+              // GestureDetector(
+              //     onTap: () {
+              //       Navigator.pop(context);
+              //     },
+              //     child: Text("Close")),
               ListTile(
                 leading: Icon(Icons.photo_library),
                 title: Text("Gallery"),
@@ -140,6 +140,7 @@ class _SubCategoryInfoState extends State<SubCategoryInfo> {
   @override
   Widget build(BuildContext context) {
     final _height = MediaQuery.of(context).size.height;
+    final _width = MediaQuery.of(context).size.width;
     return Scaffold(
       body: SingleChildScrollView(
         child: Container(
@@ -164,77 +165,101 @@ class _SubCategoryInfoState extends State<SubCategoryInfo> {
                                 fontSize: 18,
                                 fontWeight: FontWeight.w400,
                                 color: Color.fromRGBO(0, 0, 0, 1)))),
-                    Image.asset("assets/images/foodimages/Delete1.png")
+                    GestureDetector(
+                        onTap: () {
+                          longDisc.clear();
+                          shortDisc.clear();
+                          productName.clear();
+                          orignalPrice.clear();
+                          dropdownvalue = 1;
+                          setState(() {
+                            _image = null;
+                          });
+                        },
+                        child:
+                            Image.asset("assets/images/foodimages/Delete1.png"))
                   ],
                 ),
               ),
-              Stack(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(top: 25.0),
-                    child: Center(
-                      child: _image != null
-                          ? CircleAvatar(
-                              radius: 60.0,
-                              child: ClipRRect(
-                                child: Image.file(
-                                  _image!,
-                                  height: 130,
-                                  width: 130,
-                                  fit: BoxFit.fill,
-                                ),
-                                borderRadius: BorderRadius.circular(150.0),
-                              ),
-                            )
-                          : profileImage != null
+//upload pic
+
+              Container(
+                width: _width / 3,
+                height: _height / 5.9,
+                // color: Colors.amber,
+                child: Stack(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(top: 25.0),
+                      child: GestureDetector(
+                        onTap: () => _showPicker(context),
+                        child: Center(
+                          child: _image != null
                               ? CircleAvatar(
                                   radius: 60.0,
                                   child: ClipRRect(
-                                    child: Image.network(
-                                      profileImage!,
-                                      width: 130,
+                                    child: Image.file(
+                                      _image!,
                                       height: 130,
+                                      width: 130,
                                       fit: BoxFit.fill,
                                     ),
                                     borderRadius: BorderRadius.circular(150.0),
                                   ),
                                 )
-                              : CircleAvatar(
-                                  radius: 60.0,
-                                  child: ClipRRect(
-                                    child: Image.asset(
-                                      "assets/images/vendor_logo.png",
-                                      width: 130,
-                                      height: 130,
-                                      fit: BoxFit.fill,
+                              : profileImage != null
+                                  ? CircleAvatar(
+                                      radius: 60.0,
+                                      child: ClipRRect(
+                                        child: Image.network(
+                                          profileImage!,
+                                          width: 130,
+                                          height: 130,
+                                          fit: BoxFit.fill,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(150.0),
+                                      ),
+                                    )
+                                  : CircleAvatar(
+                                      radius: 60.0,
+                                      child: ClipRRect(
+                                        child: Image.asset(
+                                          "assets/images/vendor_logo.png",
+                                          width: 130,
+                                          height: 130,
+                                          fit: BoxFit.fill,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(150.0),
+                                      ),
                                     ),
-                                    borderRadius: BorderRadius.circular(150.0),
-                                  ),
-                                ),
+                        ),
+                      ),
                     ),
-                  ),
-                  Positioned(
-                      top: 115,
-                      right: 117,
-                      // top: displayHeight(context) * 0.243,
-                      // right: displayWidth(context) * 0.24,
-                      child: GestureDetector(
-                        onTap: () {
-                          // _displaySuccessMotionToast(context);
-                          _showPicker(context);
-                        },
-                        child: Container(
-                            height: 30,
-                            decoration: BoxDecoration(
-                                color: Colors.red,
-                                border: Border.all(
-                                  color: Colors.red[500]!,
-                                ),
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(20))),
-                            child: Image.asset("assets/images/Camera.png")),
-                      )),
-                ],
+                    Positioned(
+                        bottom: 0,
+                        right: 8,
+                        // top: displayHeight(context) * 0.243,
+                        // right: displayWidth(context) * 0.24,
+                        child: GestureDetector(
+                          onTap: () {
+                            // _displaySuccessMotionToast(context);
+                            _showPicker(context);
+                          },
+                          child: Container(
+                              height: 30,
+                              decoration: BoxDecoration(
+                                  color: Colors.red,
+                                  border: Border.all(
+                                    color: Colors.red[500]!,
+                                  ),
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(20))),
+                              child: Image.asset("assets/images/Camera.png")),
+                        )),
+                  ],
+                ),
               ),
               Container(
                 height: 20,

@@ -15,9 +15,11 @@ class CategoryPage extends StatefulWidget {
 }
 
 class _CategoryPageState extends State<CategoryPage> {
+  GlobalKey<ScaffoldState> _scaffoldKey3 = GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _scaffoldKey3,
       drawer: Drawer(
         child: Drawer_widget(context), // drawer widget
       ),
@@ -31,7 +33,12 @@ class _CategoryPageState extends State<CategoryPage> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Image.asset("assets/images/Menu.png"),
+                  IconButton(
+                      icon: Image.asset("assets/images/Menu.png"),
+                      // icon: Icon(Icons.menu, color: Color(0xFF1f186f),),
+                      onPressed: () {
+                        _scaffoldKey3.currentState!.openDrawer();
+                      }),
                   Text(
                     'Category',
                     style: GoogleFonts.ubuntu(

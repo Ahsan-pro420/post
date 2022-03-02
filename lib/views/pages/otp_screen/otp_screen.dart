@@ -46,6 +46,7 @@ class _OTPSCREENState extends State<OTPSCREEN> {
   String pin4 = "";
   String pin5 = "";
   String pin6 = "";
+  String pinf = "";
 
   String pppin = "";
   PinTheme defaultPinTheme = PinTheme(
@@ -60,27 +61,6 @@ class _OTPSCREENState extends State<OTPSCREEN> {
       borderRadius: BorderRadius.circular(20),
     ),
   );
-
-  // final defaultPinTheme = PinTheme(
-  //     width: 56,
-  //     height: 56,
-  //     textStyle: TextStyle(fontSize: 20, color: Color.fromRGBO(30, 60, 87, 1), fontWeight: FontWeight.w600),
-  //     decoration: BoxDecoration(
-  //       border: Border.all(color: Color.fromRGBO(234, 239, 243, 1)),
-  //       borderRadius: BorderRadius.circular(20),
-  //     ),
-  //   );
-
-  //   final focusedPinTheme = defaultPinTheme.copyDecorationWith(
-  //     border: Border.all(color: Color.fromRGBO(114, 178, 238, 1)),
-  //     borderRadius: BorderRadius.circular(8),
-  //   );
-
-  //   final submittedPinTheme = defaultPinTheme.copyWith(
-  //     decoration: defaultPinTheme.decoration.copyWith(
-  //       color: Color.fromRGBO(234, 239, 243, 1),
-  //     ),
-  //   );
 
   final BoxDecoration pinPutDecoration = BoxDecoration(
     // color: const Color.fromRGBO(255, 255, 255, 1),
@@ -128,7 +108,7 @@ class _OTPSCREENState extends State<OTPSCREEN> {
   _verifyPhone() async {
     await FirebaseAuth.instance.verifyPhoneNumber(
       phoneNumber: widget.phone,
-      // phoneNumber: "+923072647909",
+
       verificationCompleted: (PhoneAuthCredential credential) async {
         await FirebaseAuth.instance
             .signInWithCredential(credential)
@@ -254,133 +234,114 @@ class _OTPSCREENState extends State<OTPSCREEN> {
                     margin: EdgeInsets.only(left: 20, right: 20),
                     child: Column(
                       children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Container(
-                              width: displayWidth(context) * 0.12,
-                              child: TextField(
-                                controller: _pin1Controller,
-                                onChanged: (value) {
-                                  pin1 = value;
-                                },
-                                maxLength: 1,
-                                maxLengthEnforced: true,
-                                decoration: InputDecoration(
-                                    border: UnderlineInputBorder(),
-                                    hintText: "*",
-                                    hintTextDirection: TextDirection.ltr,
-                                    counterText: ''),
-                                textAlign: TextAlign.center,
-                              ),
-                            ),
-                            // SizedBox(width: 10,),
-                            Container(
-                              width: displayWidth(context) * 0.12,
-                              child: TextFormField(
-                                controller: _pin2Controller,
-                                onChanged: (value) {
-                                  pin2 = value;
-                                },
-                                maxLength: 1,
-                                decoration: InputDecoration(
-                                    border: UnderlineInputBorder(),
-                                    hintText: "*",
-                                    hintTextDirection: TextDirection.ltr,
-                                    counterText: ''),
-                                textAlign: TextAlign.center,
-                              ),
-                            ),
-                            // SizedBox(width: 10,),
-                            Container(
-                              width: displayWidth(context) * 0.12,
-                              child: TextFormField(
-                                controller: _pin3Controller,
-                                onChanged: (value) {
-                                  pin3 = value;
-                                },
-                                maxLength: 1,
-                                decoration: InputDecoration(
-                                    border: UnderlineInputBorder(),
-                                    hintText: "*",
-                                    hintTextDirection: TextDirection.ltr,
-                                    counterText: ''),
-                                textAlign: TextAlign.center,
-                              ),
-                            ),
-                            // SizedBox(width: 10,),
-                            Container(
-                              width: displayWidth(context) * 0.12,
-                              child: TextFormField(
-                                controller: _pin4Controller,
-                                onChanged: (value) {
-                                  pin4 = value;
-                                },
-                                maxLength: 1,
-                                decoration: InputDecoration(
-                                    border: UnderlineInputBorder(),
-                                    hintText: "*",
-                                    hintTextDirection: TextDirection.ltr,
-                                    counterText: ''),
-                                textAlign: TextAlign.center,
-                              ),
-                            ),
-                            Container(
-                              width: displayWidth(context) * 0.12,
-                              child: TextFormField(
-                                controller: _pin5Controller,
-                                onChanged: (value) {
-                                  pin5 = value;
-                                },
-                                maxLength: 1,
-                                decoration: InputDecoration(
-                                    border: UnderlineInputBorder(),
-                                    hintText: "*",
-                                    hintTextDirection: TextDirection.ltr,
-                                    counterText: ''),
-                                textAlign: TextAlign.center,
-                              ),
-                            ),
-                            Container(
-                              width: displayWidth(context) * 0.12,
-                              child: TextFormField(
-                                controller: _pin6Controller,
-                                onChanged: (value) {
-                                  pin6 = value;
-                                },
-                                maxLength: 1,
-                                decoration: InputDecoration(
-                                    border: UnderlineInputBorder(),
-                                    hintText: "*",
-                                    hintTextDirection: TextDirection.ltr,
-                                    counterText: ''),
-                                textAlign: TextAlign.center,
-                              ),
-                            ),
-                          ],
-                        ),
-                        // SizedBox(
-                        //   height: displayHeight(context) / 2 * 0.05,
+//pin off
+
+                        // Row(
+                        //   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        //   children: [
+                        //     Container(
+                        //       width: displayWidth(context) * 0.12,
+                        //       child: TextField(
+                        //         controller: _pin1Controller,
+                        //         onChanged: (value) {
+                        //           pin1 = value;
+                        //         },
+                        //         maxLength: 1,
+                        //         maxLengthEnforced: true,
+                        //         decoration: InputDecoration(
+                        //             border: UnderlineInputBorder(),
+                        //             hintText: "*",
+                        //             hintTextDirection: TextDirection.ltr,
+                        //             counterText: ''),
+                        //         textAlign: TextAlign.center,
+                        //       ),
+                        //     ),
+                        //     // SizedBox(width: 10,),
+                        //     Container(
+                        //       width: displayWidth(context) * 0.12,
+                        //       child: TextFormField(
+                        //         controller: _pin2Controller,
+                        //         onChanged: (value) {
+                        //           pin2 = value;
+                        //         },
+                        //         maxLength: 1,
+                        //         decoration: InputDecoration(
+                        //             border: UnderlineInputBorder(),
+                        //             hintText: "*",
+                        //             hintTextDirection: TextDirection.ltr,
+                        //             counterText: ''),
+                        //         textAlign: TextAlign.center,
+                        //       ),
+                        //     ),
+                        //     // SizedBox(width: 10,),
+                        //     Container(
+                        //       width: displayWidth(context) * 0.12,
+                        //       child: TextFormField(
+                        //         controller: _pin3Controller,
+                        //         onChanged: (value) {
+                        //           pin3 = value;
+                        //         },
+                        //         maxLength: 1,
+                        //         decoration: InputDecoration(
+                        //             border: UnderlineInputBorder(),
+                        //             hintText: "*",
+                        //             hintTextDirection: TextDirection.ltr,
+                        //             counterText: ''),
+                        //         textAlign: TextAlign.center,
+                        //       ),
+                        //     ),
+                        //     // SizedBox(width: 10,),
+                        //     Container(
+                        //       width: displayWidth(context) * 0.12,
+                        //       child: TextFormField(
+                        //         controller: _pin4Controller,
+                        //         onChanged: (value) {
+                        //           pin4 = value;
+                        //         },
+                        //         maxLength: 1,
+                        //         decoration: InputDecoration(
+                        //             border: UnderlineInputBorder(),
+                        //             hintText: "*",
+                        //             hintTextDirection: TextDirection.ltr,
+                        //             counterText: ''),
+                        //         textAlign: TextAlign.center,
+                        //       ),
+                        //     ),
+                        //     Container(
+                        //       width: displayWidth(context) * 0.12,
+                        //       child: TextFormField(
+                        //         controller: _pin5Controller,
+                        //         onChanged: (value) {
+                        //           pin5 = value;
+                        //         },
+                        //         maxLength: 1,
+                        //         decoration: InputDecoration(
+                        //             border: UnderlineInputBorder(),
+                        //             hintText: "*",
+                        //             hintTextDirection: TextDirection.ltr,
+                        //             counterText: ''),
+                        //         textAlign: TextAlign.center,
+                        //       ),
+                        //     ),
+                        //     Container(
+                        //       width: displayWidth(context) * 0.12,
+                        //       child: TextFormField(
+                        //         controller: _pin6Controller,
+                        //         onChanged: (value) {
+                        //           pin6 = value;
+                        //         },
+                        //         maxLength: 1,
+                        //         decoration: InputDecoration(
+                        //             border: UnderlineInputBorder(),
+                        //             hintText: "*",
+                        //             hintTextDirection: TextDirection.ltr,
+                        //             counterText: ''),
+                        //         textAlign: TextAlign.center,
+                        //       ),
+                        //     ),
+                        //   ],
                         // ),
-                        // Container(
-                        //   margin: EdgeInsets.only(right: 28),
-                        //   child: Row(
-                        //     mainAxisAlignment: MainAxisAlignment.end,
-                        //     children: [
-                        //       Text(
-                        //         "Didn't received code?",
-                        //         style: TextStyle(color: Colors.black),
-                        //       ),
-                        //       SizedBox(
-                        //         width: 5,
-                        //       ),
-                        //       Text(
-                        //         "resend",
-                        //         style: TextStyle(color: Colors.red),
-                        //       ),
-                        //     ],
-                        //   ),
-                        // )
+
 //remove comment
                         // Padding(
                         //   padding: EdgeInsets.only(
@@ -478,8 +439,9 @@ class _OTPSCREENState extends State<OTPSCREEN> {
                                 color: Color.fromRGBO(30, 60, 87, 1),
                                 fontWeight: FontWeight.w600),
                             decoration: BoxDecoration(
+                              color: Colors.white,
                               border: Border.all(
-                                  color: Color.fromRGBO(234, 239, 243, 1)),
+                                  color: Color.fromARGB(255, 162, 182, 199)),
                               borderRadius: BorderRadius.circular(20),
                             ),
                           ),
@@ -494,7 +456,7 @@ class _OTPSCREENState extends State<OTPSCREEN> {
                             ),
                           ),
                           showCursor: true,
-                          onCompleted: (pin) => print(pin),
+                          onCompleted: (value) => (pinf = value),
                         ),
 
                         SizedBox(
@@ -538,6 +500,7 @@ class _OTPSCREENState extends State<OTPSCREEN> {
                       onPressed: () async {
                         pppin = pin1 + pin2 + pin3 + pin4 + pin5 + pin6;
                         print(pppin);
+                        print(pinf);
 
                         // (pppin) async {
                         try {
@@ -545,7 +508,7 @@ class _OTPSCREENState extends State<OTPSCREEN> {
                               .signInWithCredential(
                                   PhoneAuthProvider.credential(
                                       verificationId: _verificationCode,
-                                      smsCode: pppin))
+                                      smsCode: pinf))
                               .then((value) async {
                             if (value.user != null) {
                               Navigator.pushAndRemoveUntil(

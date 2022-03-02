@@ -13,7 +13,9 @@ void main() async {
   runApp(MaterialApp(
     title: 'Restaurant App',
     // home: user == false ? FirstScreen() : OrderPage(),
-    home: FirstScreen(),
+
+    home: OrderPage(),
+    // home: FirstScreen(),
     debugShowCheckedModeBanner: false,
   ));
 }
