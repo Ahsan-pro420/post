@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:restaurant_app/Theme/Theme.dart';
 import 'package:restaurant_app/utills/Displaywidth.dart';
+import 'package:restaurant_app/views/pages/category/Sub_Category_tile.dart';
 import 'package:restaurant_app/views/pages/category/uploadcategoryinfo.dart';
 import 'package:restaurant_app/views/pages/category/uploadsubcategoryinfo.dart';
 import 'package:restaurant_app/views/widgets/drawer_widget.dart';
@@ -25,7 +26,7 @@ class _CategoryPageState extends State<CategoryPage> {
       ),
       body: SingleChildScrollView(
         child: Container(
-          height: displayHeight(context) - kBottomNavigationBarHeight,
+          // height: MediaQuery.of(context).size.height,
           width: displayWidth(context),
           margin: EdgeInsets.only(top: 40.0, right: 15, left: 15),
           child: Column(
@@ -214,202 +215,44 @@ class _CategoryPageState extends State<CategoryPage> {
                 ],
               ),
               // list of products
-              Column(
-                children: [
-                  Row(
-                    children: [
-                      Container(
-                        height: displayHeight(context) * 0.3,
-                        width: displayWidth(context) / 2.3,
-                        child: Stack(
-                          children: [
-                            Container(
-                              decoration: Constants.containerstyle(),
-                              height: displayHeight(context) * 0.225,
-                              width: displayWidth(context) / 2.2,
-                              margin: EdgeInsets.only(
-                                top: 50,
-                              ),
-                            ),
-                            Positioned(
-                                top: 5,
-                                left: displayWidth(context) * 0.05,
-                                child: Image.asset(
-                                    "assets/images/category_image.png")),
-                            Positioned(
-                                top: displayHeight(context) * 0.19,
-                                left: displayWidth(context) * 0.1,
-                                child: Text(
-                                  "Brand Name",
-                                  style: GoogleFonts.ubuntu(
-                                      textStyle: TextStyle(
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.w500,
-                                    color: Color.fromRGBO(0, 0, 0, 1),
-                                  )),
-                                )),
-                            Positioned(
-                                top: displayHeight(context) * 0.225,
-                                left: displayWidth(context) * 0.13,
-                                child: Text(
-                                  "Subcategory 1",
-                                  style: GoogleFonts.ubuntu(
-                                      textStyle: TextStyle(
-                                    fontSize: 12,
-                                    fontWeight: FontWeight.w400,
-                                    color: Color.fromRGBO(237, 41, 57, 1),
-                                  )),
-                                )),
-                          ],
-                        ),
-                      ),
-                      SizedBox(width: 15),
-                      Container(
-                        height: displayHeight(context) * 0.3,
-                        width: displayWidth(context) / 2.3,
-                        child: Stack(
-                          children: [
-                            Container(
-                              decoration: Constants.containerstyle(),
-                              height: displayHeight(context) * 0.225,
-                              width: displayWidth(context) / 2.2,
-                              margin: EdgeInsets.only(
-                                top: 50,
-                              ),
-                            ),
-                            Positioned(
-                                top: 5,
-                                left: displayWidth(context) * 0.05,
-                                child: Image.asset(
-                                    "assets/images/category_image.png")),
-                            Positioned(
-                                top: displayHeight(context) * 0.19,
-                                left: displayWidth(context) * 0.1,
-                                child: Text(
-                                  "Brand Name",
-                                  style: GoogleFonts.ubuntu(
-                                      textStyle: TextStyle(
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.w500,
-                                    color: Color.fromRGBO(0, 0, 0, 1),
-                                  )),
-                                )),
-                            Positioned(
-                                top: displayHeight(context) * 0.225,
-                                left: displayWidth(context) * 0.13,
-                                child: Text(
-                                  "Subcategory 2",
-                                  style: GoogleFonts.ubuntu(
-                                      textStyle: TextStyle(
-                                    fontSize: 12,
-                                    fontWeight: FontWeight.w400,
-                                    color: Color.fromRGBO(237, 41, 57, 1),
-                                  )),
-                                )),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Row(
-                    children: [
-                      Container(
-                        height: displayHeight(context) * 0.3,
-                        width: displayWidth(context) / 2.3,
-                        child: Stack(
-                          children: [
-                            Container(
-                              decoration: Constants.containerstyle(),
-                              height: displayHeight(context) * 0.225,
-                              width: displayWidth(context) / 2.2,
-                              margin: EdgeInsets.only(
-                                top: 50,
-                              ),
-                            ),
-                            Positioned(
-                                top: 5,
-                                left: displayWidth(context) * 0.05,
-                                child: Image.asset(
-                                    "assets/images/category_image.png")),
-                            Positioned(
-                                top: displayHeight(context) * 0.19,
-                                left: displayWidth(context) * 0.1,
-                                child: Text(
-                                  "Brand Name",
-                                  style: GoogleFonts.ubuntu(
-                                      textStyle: TextStyle(
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.w500,
-                                    color: Color.fromRGBO(0, 0, 0, 1),
-                                  )),
-                                )),
-                            Positioned(
-                                top: displayHeight(context) * 0.225,
-                                left: displayWidth(context) * 0.13,
-                                child: Text(
-                                  "Subcategory 1",
-                                  style: GoogleFonts.ubuntu(
-                                      textStyle: TextStyle(
-                                    fontSize: 12,
-                                    fontWeight: FontWeight.w400,
-                                    color: Color.fromRGBO(237, 41, 57, 1),
-                                  )),
-                                )),
-                          ],
-                        ),
-                      ),
-                      SizedBox(width: 15),
-                      Container(
-                        height: displayHeight(context) * 0.3,
-                        width: displayWidth(context) / 2.3,
-                        child: Stack(
-                          children: [
-                            Container(
-                              decoration: Constants.containerstyle(),
-                              height: displayHeight(context) * 0.225,
-                              width: displayWidth(context) / 2.2,
-                              margin: EdgeInsets.only(
-                                top: 50,
-                              ),
-                            ),
-                            Positioned(
-                                top: 5,
-                                left: displayWidth(context) * 0.05,
-                                child: Image.asset(
-                                    "assets/images/category_image.png")),
-                            Positioned(
-                                top: displayHeight(context) * 0.19,
-                                left: displayWidth(context) * 0.1,
-                                child: Text(
-                                  "Brand Name",
-                                  style: GoogleFonts.ubuntu(
-                                      textStyle: TextStyle(
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.w500,
-                                    color: Color.fromRGBO(0, 0, 0, 1),
-                                  )),
-                                )),
-                            Positioned(
-                                top: displayHeight(context) * 0.225,
-                                left: displayWidth(context) * 0.13,
-                                child: Text(
-                                  "Subcategory 2",
-                                  style: GoogleFonts.ubuntu(
-                                      textStyle: TextStyle(
-                                    fontSize: 12,
-                                    fontWeight: FontWeight.w400,
-                                    color: Color.fromRGBO(237, 41, 57, 1),
-                                  )),
-                                )),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
+              // Column(
+              //   children: [
+              //     Row(
+              //       children: [
+              //         Sub_Category_tile(context),
+              //         SizedBox(width: 15),
+              //         Sub_Category_tile(context)
+              //       ],
+              //     ),
+              //     SizedBox(
+              //       height: 10,
+              //     ),
+              //     Row(
+              //       children: [
+              //         Sub_Category_tile(context),
+              //         SizedBox(width: 15),
+              //       ],
+              //     ),
+              //   ],
+              // ),
+
+//Grid View
+
+              Container(
+                // color: Colors.amber,
+                // height: MediaQuery.of(context).size.height,
+                child: GridView.builder(
+                    shrinkWrap: true,
+                    physics: NeverScrollableScrollPhysics(),
+                    gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+                        maxCrossAxisExtent: 200,
+                        childAspectRatio: 2 / 2.5,
+                        crossAxisSpacing: 20,
+                        mainAxisSpacing: 20),
+                    itemCount: 10,
+                    itemBuilder: (BuildContext ctx, index) {
+                      return Sub_Category_tile(context);
+                    }),
               ),
             ],
           ),
