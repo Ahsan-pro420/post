@@ -21,10 +21,14 @@ class _OrderDetailsState extends State<OrderDetails> {
         child: SingleChildScrollView(
           child: Column(
             children: [
+//Order Details Image
+
               Container(
                 // height: displayHeight(context)*0.3,
-                // width: displayWidth(context),
+                width: displayWidth(context),
+
                 decoration: BoxDecoration(
+
                     // gradient: LinearGradient(
                     //     begin: Alignment.topLeft,
                     //
@@ -45,8 +49,21 @@ class _OrderDetailsState extends State<OrderDetails> {
                     ),
                 child: Stack(
                   children: [
-                    Image.asset("assets/images/foodimages/order_image.png"),
-                    Image.asset("assets/images/foodimages/gradient_image.png"),
+                    Container(
+                      width: displayWidth(context),
+                      child: Image.asset(
+                        "assets/images/foodimages/order_image.png",
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                    Container(
+                      width: displayWidth(context),
+                      child: Image.asset(
+                        "assets/images/foodimages/gradient_image.png",
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                    // Image.asset("assets/images/foodimages/gradient_image.png"),
                     Positioned(
                       top: displayHeight(context) * 0.064,
                       left: displayWidth(context) * 0.066,
@@ -95,6 +112,9 @@ class _OrderDetailsState extends State<OrderDetails> {
               SizedBox(
                 height: 20,
               ),
+
+//Order Number Cart
+
               Container(
                 height: displayHeight(context) * 0.35,
                 width: displayWidth(context) / 1.17,
@@ -206,9 +226,13 @@ class _OrderDetailsState extends State<OrderDetails> {
                   ),
                 ),
               ),
+
               SizedBox(
                 height: 20,
               ),
+
+//Product Name
+
               Container(
                 height: displayHeight(context) * 0.3,
                 width: displayWidth(context) / 1.17,
@@ -332,7 +356,10 @@ class _OrderDetailsState extends State<OrderDetails> {
                     ],
                   ),
                 ),
-              )
+              ),
+              SizedBox(
+                height: 20,
+              ),
             ],
           ),
         ),

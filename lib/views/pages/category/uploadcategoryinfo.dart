@@ -36,8 +36,11 @@ class _CategoryInfoState extends State<CategoryInfo> {
   // }
 
   File? _image;
+  File? _imageCover;
   String? profileImage;
+  TextEditingController CategoryName = TextEditingController();
 
+//For Profile image
   _imageFromCamera() async {
     XFile? image = await ImagePicker()
         .pickImage(source: ImageSource.camera, imageQuality: 50);
@@ -65,6 +68,35 @@ class _CategoryInfoState extends State<CategoryInfo> {
     }
   }
 
+  //For Cover Image
+  _imageCoverFromCamera() async {
+    XFile? imageC = await ImagePicker()
+        .pickImage(source: ImageSource.camera, imageQuality: 50);
+    // .pickImage(source: ImageSource.camera, imageQuality: 50);
+
+    if (imageC != null) {
+      setState(() {
+        _imageCover = File(imageC.path);
+        // Navigator.pop(context);
+        print(_imageCover);
+      });
+    }
+  }
+
+  _imageCoverFromGallery() async {
+    XFile? imageC = await ImagePicker()
+        .pickImage(source: ImageSource.gallery, imageQuality: 50);
+    // .pickImage(source: ImageSource.camera, imageQuality: 50);
+
+    if (imageC != null) {
+      setState(() {
+        _imageCover = File(imageC.path);
+        print(_imageCover!.path);
+      });
+    }
+  }
+
+//Bottom Sheet For Profile Image
   void _showPicker(context1) {
     showModalBottomSheet(
         context: context1,
@@ -99,6 +131,38 @@ class _CategoryInfoState extends State<CategoryInfo> {
         });
   }
 
+  //Bottom Sheet for Cover Image
+
+  void _showPickerCover(context) {
+    showModalBottomSheet(
+        context: context,
+        builder: (BuildContext context) {
+          didChangeDependencies();
+          return SafeArea(
+              child: Wrap(
+            children: [
+              Text("Cover Photo"),
+              ListTile(
+                leading: Icon(Icons.photo_library),
+                title: Text("Gallery"),
+                onTap: () {
+                  _imageCoverFromGallery();
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                leading: Icon(Icons.camera_alt),
+                title: Text("Camera"),
+                onTap: () {
+                  _imageCoverFromCamera();
+                  Navigator.pop(context);
+                },
+              ),
+            ],
+          ));
+        });
+  }
+
   @override
   Widget build(BuildContext context) {
     final _height = MediaQuery.of(context).size.height;
@@ -117,61 +181,80 @@ class _CategoryInfoState extends State<CategoryInfo> {
                 child: Stack(
                   children: [
                     Container(
-                        child: _image != null
+                        width: displayWidth(context),
+                        child: _imageCover != null
                             ? Container(
-                                decoration: BoxDecoration(),
-                                child: Center(
-                                  child: Image.file(
-                                    _image!,
-                                    // height: displayHeight(context) / 3,
-                                    // width: displayWidth(context),
-                                    fit: BoxFit.contain,
-                                  ),
+                                width: displayWidth(context),
+                                child: Image.file(
+                                  _imageCover!,
+                                  // height: displayHeight(context) / 3,
+                                  // width: displayWidth(context),
+                                  fit: BoxFit.cover,
                                 ),
                               )
                             : Image.asset(
-                                "assets/images/foodimages/cover2.jpg",
-                                fit: BoxFit.fill,
+                                "assets/images/foodimages/gradient_image.png",
+                                fit: BoxFit.cover,
+                                color: Colors.grey,
                               )),
                     Padding(
                       padding: const EdgeInsets.only(
-                          top: 40.0, left: 15.0, right: 15.0),
+                          top: 40.0, left: 17.0, right: 15.0),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
+//back icon
+
                           GestureDetector(
                               onTap: () {
                                 Navigator.pop(context);
                               },
                               child: Image.asset(
                                 "assets/images/Vector.png",
-                                color: Colors.white,
+                                color: Color.fromARGB(255, 0, 0, 0),
                               )), //back icon
                           Text("Category Title",
                               style: GoogleFonts.ubuntu(
                                   textStyle: TextStyle(
                                       fontSize: 18,
                                       fontWeight: FontWeight.w400,
-                                      color: Colors.white))),
-                          Image.asset(
-                            "assets/images/foodimages/Delete1.png",
-                            color: Colors.white,
+                                      color: Color.fromARGB(255, 0, 0, 0)))),
+//Delete Button
+
+                          GestureDetector(
+                            onTap: () {
+                              setState(() {
+                                _image = null;
+                                _imageCover = null;
+                                CategoryName.clear();
+                              });
+                            },
+                            child: Image.asset(
+                              "assets/images/foodimages/Delete1.png",
+                              color: Color.fromARGB(255, 7, 7, 7),
+                            ),
                           )
                         ],
                       ),
                     ),
                     Positioned(
-                        top: displayHeight(context) * 0.2,
-                        left: displayWidth(context) / 3.2,
+                      top: displayHeight(context) * 0.2,
+                      left: displayWidth(context) / 3.2,
+                      child: GestureDetector(
+                        onTap: () {
+                          _showPickerCover(context);
+                        },
                         child: Text(
                           "Upload Cover Picture",
                           style: GoogleFonts.ubuntu(
                               textStyle: TextStyle(
                             fontSize: 15,
                             fontWeight: FontWeight.w400,
-                            color: Color.fromRGBO(0, 0, 0, 0.4),
+                            color: Color.fromRGBO(0, 0, 0, 0.9),
                           )),
-                        )),
+                        ),
+                      ),
+                    ),
 
                     // Container(
                     //     // height: displayHeight(context) * 0.2,
@@ -203,7 +286,7 @@ class _CategoryInfoState extends State<CategoryInfo> {
                                       _image!,
                                       height: 130,
                                       width: 130,
-                                      fit: BoxFit.fill,
+                                      fit: BoxFit.cover,
                                     ),
                                     borderRadius: BorderRadius.circular(150.0),
                                   ),
@@ -302,7 +385,9 @@ class _CategoryInfoState extends State<CategoryInfo> {
                                 fontWeight: FontWeight.w500,
                                 color: Color.fromRGBO(0, 0, 0, 0.4))),
                       ),
-                      TextField(),
+                      TextField(
+                        controller: CategoryName,
+                      ),
                     ],
                   )),
               SizedBox(
