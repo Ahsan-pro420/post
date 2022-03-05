@@ -1,4 +1,6 @@
 // import 'package:country_code_picker/country_code.dart';
+import 'dart:async';
+
 import 'package:country_code_picker/country_code_picker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -9,6 +11,8 @@ import 'package:restaurant_app/utills/customtextbutton.dart';
 // import 'package:restaurant_app/utills/textInputfield.dart';
 // import 'package:restaurant_app/utills/validation.dart';
 import 'package:restaurant_app/views/pages/otp_screen/otp_screen.dart';
+
+bool resendtimer = false;
 
 class SignIn extends StatefulWidget {
   const SignIn({Key? key}) : super(key: key);
@@ -167,14 +171,20 @@ class _SignInState extends State<SignIn> {
                       onPressed: () {
                         setState(() {
                           phoneNumber = code + controllernumber.text;
+                          print(phoneNumber);
+
+                          Timer(
+                            Duration(seconds: 35),
+                            () => resendtimer = true,
+                          );
                         });
                         // Navigator.pop(context);
                         if (controllernumber.text.isNotEmpty) {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => OTPSCREEN(phoneNumber)),
-                          );
+                          Navigator.pushAndRemoveUntil(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => OTPSCREEN(phoneNumber)),
+                              (route) => false);
                         } else {
                           ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                               content: Text("Enter Your Phone Number.")));

@@ -1,12 +1,16 @@
 import 'dart:io';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:motion_toast/motion_toast.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:motion_toast/resources/arrays.dart';
 import 'package:restaurant_app/Models/AuthApi/UpdateUserProfile/UserProfileUpdate.dart';
 import 'package:restaurant_app/Theme/Theme.dart';
+import 'package:restaurant_app/main.dart';
+import 'package:restaurant_app/main_2.dart';
 import 'package:restaurant_app/utills/Displaywidth.dart';
 import 'package:restaurant_app/utills/customtextbutton.dart';
+import 'package:restaurant_app/views/pages/firstScreen/splash_screen.dart';
 import 'package:restaurant_app/views/widgets/tab_bar_view.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:image_picker/image_picker.dart';
@@ -343,6 +347,27 @@ class _AccountSettingState extends State<AccountSetting> {
                   },
                   textStyle: TextStyle(),
                 ),
+                SizedBox(height: 8),
+                CustomTextButton(
+                    buttonName: "Logout",
+                    buttonTextStyle: GoogleFonts.ubuntu(
+                        textStyle: Constants.loginbuttonstyle()),
+                    buttoncolor: Constants.black_light,
+                    height: _height * 0.078,
+                    width: displayWidth(context) * 0.9,
+                    highlightColor: Constants.black_light,
+                    onPressed: () {
+                      FirebaseAuth.instance.signOut();
+                      Navigator.pushAndRemoveUntil(
+                          context,
+                          MaterialPageRoute(builder: (context) => Main_2()),
+                          (route) => false);
+                      // Navigator.pushReplacement(
+                      //     context,
+                      //     MaterialPageRoute(
+                      //         builder: (BuildContext context) => Main_2()));
+                    },
+                    textStyle: TextStyle())
               ],
             ),
           ),

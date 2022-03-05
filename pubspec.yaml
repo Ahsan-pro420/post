@@ -43,8 +43,8 @@ dependencies:
   flutter_polyline_points:
   google_maps_flutter: ^2.0.05
   location: 
-  firebase_messaging:
-  flutter_native_timezone:
+  # firebase_messaging:
+  # flutter_native_timezone:
   http:
   convert:
   image_picker:

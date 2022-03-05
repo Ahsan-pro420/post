@@ -1,7 +1,9 @@
+import 'dart:async';
+
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_messaging/firebase_messaging.dart';
+// import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_native_timezone/flutter_native_timezone.dart';
+// import 'package:flutter_native_timezone/flutter_native_timezone.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:pinput/pinput.dart';
 // import 'package:pinput/pin_put/pin_put.dart';
@@ -11,6 +13,7 @@ import 'package:restaurant_app/Theme/Theme.dart';
 import 'package:restaurant_app/utills/Displaywidth.dart';
 import 'package:restaurant_app/utills/customtextbutton.dart';
 import 'package:restaurant_app/views/pages/HomeScreen/orders.dart';
+import 'package:restaurant_app/views/pages/signin/sign_in_page.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class OTPSCREEN extends StatefulWidget {
@@ -35,20 +38,21 @@ class _OTPSCREENState extends State<OTPSCREEN> {
   final TextEditingController _pin5Controller = TextEditingController();
   final TextEditingController _pin6Controller = TextEditingController();
   final FocusNode _pinPutFocusNode = FocusNode();
-  FirebaseMessaging _firebaseMessaging = FirebaseMessaging.instance;
+  // FirebaseMessaging _firebaseMessaging = FirebaseMessaging.instance;
   String? _firebaseToken;
   String? _currentTimeZone;
 
   // String ppin = _pin1Controller.text.toString();
-  String pin1 = "";
-  String pin2 = "";
-  String pin3 = "";
-  String pin4 = "";
-  String pin5 = "";
-  String pin6 = "";
+  // String pin1 = "";
+  // String pin2 = "";
+  // String pin3 = "";
+  // String pin4 = "";
+  // String pin5 = "";
+  // String pin6 = "";
   String pinf = "";
 
   String pppin = "";
+  var _resendToken;
   PinTheme defaultPinTheme = PinTheme(
     width: 56,
     height: 56,
@@ -70,6 +74,26 @@ class _OTPSCREENState extends State<OTPSCREEN> {
       // color: const Color.fromRGBO(126, 203, 224, 1),
     ),
   );
+
+  void resend_timer_function() {
+    setState(() {
+      if (resendtimer == true) {
+        resendtimer = false;
+        print("$resendtimer");
+        Timer(
+            Duration(seconds: 35),
+            () => setState(() {
+                  resendtimer = true;
+                }));
+      }
+      // if (resendtimer == false) {
+      //   Timer(Duration(seconds: 30), (() => resendtimer = true));
+      //   print("$resendtimer");
+      // } else if (resendtimer == true) {
+      //   resendtimer = false;
+      //   print("$resendtimer");
+    });
+  }
 
   @override
   void initState() {
@@ -107,49 +131,48 @@ class _OTPSCREENState extends State<OTPSCREEN> {
 
   _verifyPhone() async {
     await FirebaseAuth.instance.verifyPhoneNumber(
-      phoneNumber: widget.phone,
+        phoneNumber: widget.phone,
+        verificationCompleted: (PhoneAuthCredential credential) async {
+          await FirebaseAuth.instance
+              .signInWithCredential(credential)
+              .then((value) async {
+            if (value.user != null) {
+              //remove comment
+              // final String _currentTimeZone =
+              //     await FlutterNativeTimezone.getLocalTimezone();
+              // _firebaseMessaging.getToken().then((token) {
+              //   ScaffoldMessenger.of(context)
+              //       .showSnackBar(SnackBar(content: Text("/$token")));
+              // });
+              // ScaffoldMessenger.of(context)
+              //     .showSnackBar(SnackBar(content: Text("/$_currentTimeZone")));
 
-      verificationCompleted: (PhoneAuthCredential credential) async {
-        await FirebaseAuth.instance
-            .signInWithCredential(credential)
-            .then((value) async {
-          if (value.user != null) {
-            //remove comment
-            // final String _currentTimeZone =
-            //     await FlutterNativeTimezone.getLocalTimezone();
-            // _firebaseMessaging.getToken().then((token) {
-            //   ScaffoldMessenger.of(context)
-            //       .showSnackBar(SnackBar(content: Text("/$token")));
-            // });
-            // ScaffoldMessenger.of(context)
-            //     .showSnackBar(SnackBar(content: Text("/$_currentTimeZone")));
-
-            Navigator.pushAndRemoveUntil(
-                context,
-                MaterialPageRoute(builder: (context) => OrderPage()),
-                (route) => false);
-          }
-        });
-      },
-      verificationFailed: (FirebaseAuthException e) {
-        print(e.message);
-        ScaffoldMessenger.of(context)
-            .showSnackBar(SnackBar(content: Text("verification Failed.")));
-      },
-      codeSent: (String verficationID, int? resendToken) {
-        setState(() {
-          _verificationCode = verficationID;
+              Navigator.pushAndRemoveUntil(
+                  context,
+                  MaterialPageRoute(builder: (context) => OrderPage()),
+                  (route) => false);
+            }
+          });
+        },
+        verificationFailed: (FirebaseAuthException e) {
+          print(e.message);
           ScaffoldMessenger.of(context)
-              .showSnackBar(SnackBar(content: Text('code sent section.')));
-        });
-      },
-      codeAutoRetrievalTimeout: (String verificationID) {
-        setState(() {
-          _verificationCode = verificationID;
-        });
-      },
-      // timeout: Duration(seconds: 25),
-    );
+              .showSnackBar(SnackBar(content: Text("verification Failed.")));
+        },
+        codeSent: (String verficationID, int? resendToken) {
+          setState(() {
+            _verificationCode = verficationID;
+            ScaffoldMessenger.of(context)
+                .showSnackBar(SnackBar(content: Text('code sent section.')));
+          });
+        },
+        codeAutoRetrievalTimeout: (String verificationID) {
+          setState(() {
+            _verificationCode = verificationID;
+          });
+        },
+        timeout: Duration(seconds: 25),
+        forceResendingToken: _resendToken);
   }
 
   // _verifyPhone() async {
@@ -474,10 +497,37 @@ class _OTPSCREENState extends State<OTPSCREEN> {
                               SizedBox(
                                 width: 5,
                               ),
-                              Text(
-                                "resend",
-                                style: TextStyle(color: Colors.red),
+                              TextButton(
+                                style: ElevatedButton.styleFrom(
+                                    // onPrimary: Colors.amber,
+                                    primary: Color.fromARGB(166, 255, 255, 255),
+                                    onPrimary: Colors.red,
+                                    animationDuration: Duration(seconds: 5)),
+
+                                onPressed: resendtimer
+                                    ? (() => setState(() {
+                                          resend_timer_function();
+                                          _verifyPhone();
+                                        }))
+                                    : null,
+                                //  resendtimer
+                                //     ? () => print("$resendtimer")
+                                //     : () => print("$resendtimer"),
+                                child: Text(
+                                  "resend",
+                                  style: TextStyle(color: Colors.red),
+                                ),
                               ),
+                              // GestureDetector(
+                              //   onTap: () {
+                              //     _verifyPhone();
+                              //     print("verify phone");
+                              //   },
+                              //   child: Text(
+                              //     "resend",
+                              //     style: TextStyle(color: Colors.red),
+                              //   ),
+                              // ),
                             ],
                           ),
                         )
@@ -498,8 +548,8 @@ class _OTPSCREENState extends State<OTPSCREEN> {
                       width: displayWidth(context) * 0.9,
                       highlightColor: Constants.black_light,
                       onPressed: () async {
-                        pppin = pin1 + pin2 + pin3 + pin4 + pin5 + pin6;
-                        print(pppin);
+                        // pppin = pin1 + pin2 + pin3 + pin4 + pin5 + pin6;
+                        // print(pppin);
                         print(pinf);
 
                         // (pppin) async {
