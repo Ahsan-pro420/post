@@ -46,7 +46,7 @@ Widget order_history_tile(context) {
                   )),
                 ),
                 SizedBox(
-                  height: 8,
+                  height: MediaQuery.of(context).size.height * 0.008,
                 ),
                 Text(
                   "Mighty Zinger",
@@ -58,7 +58,7 @@ Widget order_history_tile(context) {
                   )),
                 ),
                 SizedBox(
-                  height: 9,
+                  height: MediaQuery.of(context).size.height * 0.015,
                 ),
                 Text(
                   "17/5/2021, 22:32",

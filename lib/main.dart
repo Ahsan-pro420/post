@@ -14,9 +14,9 @@ void main() async {
   print(user);
   runApp(MaterialApp(
     title: 'Restaurant App',
-    home: Main_2(),
+    //home: Main_2(),
 
-    // // home: OrderPage(),
+    home: OrderPage(),
     // home: FirstScreen(),
     debugShowCheckedModeBanner: false,
   ));

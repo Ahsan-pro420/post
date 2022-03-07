@@ -226,7 +226,7 @@ class _OTPSCREENState extends State<OTPSCREEN> {
               textAlign: TextAlign.center,
             ),
             SizedBox(
-              height: displayHeight(context) / 2 * 0.045,
+              height: displayHeight(context) / 2 * 0.03,
             ),
             Text(
               "Enter the OTP sent on your phone number",
