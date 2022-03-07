@@ -45,7 +45,7 @@ dependencies:
   location: 
   # firebase_messaging:
   # flutter_native_timezone:
-  http:
+  http: ^0.13.4
   convert:
   image_picker:
   provider:

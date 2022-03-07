@@ -14,7 +14,6 @@ class FirstScreen extends StatefulWidget {
 }
 
 class _FirstScreenState extends State<FirstScreen> {
-
   @override
   Widget build(BuildContext context) {
     final _height = MediaQuery.of(context).size.height;
@@ -23,12 +22,14 @@ class _FirstScreenState extends State<FirstScreen> {
         child: Column(
           children: [
             WavyHeaderImage(),
-            SizedBox(height: displayHeight(context)*0.35,),
+            SizedBox(
+              height: displayHeight(context) * 0.35,
+            ),
             Container(
               child: CustomTextButton(
                 buttonName: 'GET STARTED',
-                buttonTextStyle: GoogleFonts.ubuntu(
-                    textStyle: Constants.loginbuttonstyle()),
+                buttonTextStyle:
+                    GoogleFonts.ubuntu(textStyle: Constants.loginbuttonstyle()),
                 buttoncolor: Constants.black_light,
                 height: _height * 0.066,
                 width: displayWidth(context) * 0.9,
@@ -38,9 +39,8 @@ class _FirstScreenState extends State<FirstScreen> {
                     context,
                     MaterialPageRoute(builder: (context) => SignIn()),
                   );
-                }, textStyle: TextStyle(
-
-              ),
+                },
+                textStyle: TextStyle(),
               ),
             )
           ],
@@ -48,9 +48,4 @@ class _FirstScreenState extends State<FirstScreen> {
       ),
     );
   }
-  
 }
-
-
-
-

@@ -5,7 +5,33 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:restaurant_app/views/widgets/tab_bar_view.dart';
 
 class OrderDetails extends StatefulWidget {
-  const OrderDetails({Key? key}) : super(key: key);
+  String price,
+      name,
+      date,
+      id,
+      imagee,
+      new_priceee,
+      net_amounttt,
+      taxxx,
+      quantityyy,
+      cus_nameee,
+      cus_addresss,
+      delivert_charr;
+  OrderDetails(
+      {Key? key,
+      required this.id,
+      required this.name,
+      required this.imagee,
+      required this.price,
+      required this.date,
+      required this.new_priceee,
+      required this.net_amounttt,
+      required this.delivert_charr,
+      required this.taxxx,
+      required this.quantityyy,
+      required this.cus_addresss,
+      required this.cus_nameee})
+      : super(key: key);
 
   @override
   _OrderDetailsState createState() => _OrderDetailsState();
@@ -52,6 +78,7 @@ class _OrderDetailsState extends State<OrderDetails> {
                     Container(
                       width: displayWidth(context),
                       child: Image.asset(
+                        // widget.imagee,
                         "assets/images/foodimages/order_image.png",
                         fit: BoxFit.cover,
                       ),
@@ -96,7 +123,7 @@ class _OrderDetailsState extends State<OrderDetails> {
                       left: displayWidth(context) * 0.040,
                       // bottom: displayHeight(context)*0.049,
                       child: Text(
-                        "KFC - PAYA LEBAR",
+                        widget.name,
                         style: GoogleFonts.ubuntu(
                           textStyle: TextStyle(
                             fontWeight: FontWeight.w700,
@@ -137,7 +164,7 @@ class _OrderDetailsState extends State<OrderDetails> {
                       Padding(
                         padding: const EdgeInsets.only(top: 8.0, bottom: 8),
                         child: Text(
-                          "1351265",
+                          widget.id,
                           style: GoogleFonts.ubuntu(
                             textStyle: TextStyle(
                               fontWeight: FontWeight.w400,
@@ -171,7 +198,7 @@ class _OrderDetailsState extends State<OrderDetails> {
                         padding:
                             const EdgeInsets.only(bottom: 16.0, right: 25.0),
                         child: Text(
-                          "10 Paya Lebar Rd, #B1-14 PLQ Mall, Singaore 409057",
+                          widget.cus_nameee,
                           style: GoogleFonts.ubuntu(
                             textStyle: TextStyle(
                               fontWeight: FontWeight.w400,
@@ -205,7 +232,7 @@ class _OrderDetailsState extends State<OrderDetails> {
                         padding:
                             const EdgeInsets.only(bottom: 16.0, right: 25.0),
                         child: Text(
-                          "10 Paya Lebar Rd, #B1-14 PLQ Mall, Singaore 409057",
+                          widget.cus_addresss,
                           style: GoogleFonts.ubuntu(
                             textStyle: TextStyle(
                               fontWeight: FontWeight.w400,
@@ -246,19 +273,19 @@ class _OrderDetailsState extends State<OrderDetails> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            "Product Name",
+                            "${widget.name}",
                             style: GoogleFonts.ubuntu(
                               textStyle: Constants.blackboldstyle(),
                             ),
                           ),
                           Text(
-                            "1x",
+                            "${widget.quantityyy}",
                             style: GoogleFonts.ubuntu(
                               textStyle: Constants.blackboldstyle(),
                             ),
                           ),
                           Text(
-                            "\$86.00",
+                            "\$ ${widget.new_priceee}",
                             style: GoogleFonts.ubuntu(
                               textStyle: Constants.blackboldstyle(),
                             ),
@@ -282,7 +309,7 @@ class _OrderDetailsState extends State<OrderDetails> {
                             ),
                           ),
                           Text(
-                            "\$86.00",
+                            "\$ ${widget.net_amounttt}",
                             style: GoogleFonts.ubuntu(
                               textStyle: Constants.blacksmallboldstyle(),
                             ),
@@ -302,7 +329,7 @@ class _OrderDetailsState extends State<OrderDetails> {
                             ),
                           ),
                           Text(
-                            "\$6.00",
+                            "\$ ${widget.delivert_charr}",
                             style: GoogleFonts.ubuntu(
                               textStyle: Constants.blacksmallboldstyle(),
                             ),
@@ -322,7 +349,7 @@ class _OrderDetailsState extends State<OrderDetails> {
                             ),
                           ),
                           Text(
-                            "\$3.00",
+                            "\$ ${widget.taxxx}",
                             style: GoogleFonts.ubuntu(
                               textStyle: Constants.blacksmallboldstyle(),
                             ),
@@ -346,7 +373,7 @@ class _OrderDetailsState extends State<OrderDetails> {
                             ),
                           ),
                           Text(
-                            "\$95.00",
+                            "\$ ${widget.price}",
                             style: GoogleFonts.ubuntu(
                               textStyle: Constants.blackboldstyle(),
                             ),

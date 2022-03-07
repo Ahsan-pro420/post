@@ -5,13 +5,40 @@ import 'package:restaurant_app/Theme/Theme.dart';
 import 'package:restaurant_app/utills/Displaywidth.dart';
 import 'package:restaurant_app/views/pages/orderHistory/orderDetails.dart';
 
-Widget order_history_tile(context) {
+Widget order_history_tile(
+    context,
+    Cat_name,
+    prod_name,
+    pricee,
+    datee,
+    idd,
+    iimage,
+    new_pricee,
+    net_amountt,
+    taxx,
+    quantityy,
+    cus_namee,
+    cus_address,
+    delivert_char) {
   return (GestureDetector(
     onTap: () {
       Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => OrderDetails()),
-      );
+          context,
+          MaterialPageRoute(
+            builder: (context) => OrderDetails(
+                id: idd,
+                name: prod_name,
+                imagee: iimage,
+                price: pricee,
+                date: datee,
+                new_priceee: new_pricee,
+                net_amounttt: net_amountt,
+                delivert_charr: delivert_char,
+                taxxx: taxx,
+                quantityyy: quantityy,
+                cus_addresss: cus_address,
+                cus_nameee: cus_namee),
+          ));
     },
     child: Container(
       margin: EdgeInsets.only(top: 25),
@@ -37,7 +64,7 @@ Widget order_history_tile(context) {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  "KFC",
+                  Cat_name,
                   style: GoogleFonts.ubuntu(
                       textStyle: TextStyle(
                     fontSize: 17,
@@ -49,7 +76,7 @@ Widget order_history_tile(context) {
                   height: 8,
                 ),
                 Text(
-                  "Mighty Zinger",
+                  prod_name,
                   style: GoogleFonts.ubuntu(
                       textStyle: TextStyle(
                     fontWeight: FontWeight.w400,
@@ -61,7 +88,7 @@ Widget order_history_tile(context) {
                   height: 9,
                 ),
                 Text(
-                  "17/5/2021, 22:32",
+                  "$datee, 22:32",
                   style: GoogleFonts.ubuntu(
                       textStyle: TextStyle(
                     fontWeight: FontWeight.w400,
@@ -81,7 +108,7 @@ Widget order_history_tile(context) {
               Padding(
                 padding: const EdgeInsets.only(top: 15.0, left: 40),
                 child: Text(
-                  "\$80.00",
+                  "\$ $pricee",
                   style: GoogleFonts.ubuntu(
                       textStyle: TextStyle(
                     fontSize: 15,
