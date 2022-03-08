@@ -506,27 +506,11 @@ class _OTPSCREENState extends State<OTPSCREEN> {
                               ),
 
                               ElevatedButton(
-                                style: ButtonStyle(
-                                  backgroundColor:
-                                      MaterialStateProperty.resolveWith<Color>(
-                                    (Set<MaterialState> states) {
-                                      if (states
-                                          .contains(MaterialState.pressed))
-                                        return Colors.blue;
-                                      else if (states
-                                          .contains(MaterialState.disabled))
-                                        return Colors.green;
-                                      return Colors
-                                          .black; // Use the component's default.
-                                    },
-                                  ),
-
-                                  // ElevatedButton.styleFrom(
-                                  //     // onPrimary: Colors.amber,
-                                  //     primary: Color.fromARGB(166, 255, 255, 255),
-                                  //     onPrimary: Colors.red,
-                                  //     animationDuration: Duration(seconds: 5),
-                                ),
+                                style: ElevatedButton.styleFrom(
+                                    // onPrimary: Colors.amber,
+                                    primary: Color.fromARGB(166, 255, 255, 255),
+                                    onPrimary: Colors.red,
+                                    animationDuration: Duration(seconds: 5)),
 
                                 onPressed: resendtimer
                                     ? (() => setState(() {
