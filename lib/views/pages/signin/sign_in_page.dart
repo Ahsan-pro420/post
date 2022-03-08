@@ -174,9 +174,11 @@ class _SignInState extends State<SignIn> {
                           print(phoneNumber);
 
                           Timer(
-                            Duration(seconds: 35),
-                            () => resendtimer = true,
-                          );
+                              Duration(seconds: 35),
+                              () => {
+                                    resendtimer = true,
+                                    resend_color = Colors.red
+                                  });
                         });
                         // Navigator.pop(context);
                         if (controllernumber.text.isNotEmpty) {

@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:restaurant_app/views/pages/HomeScreen/orders.dart';
 import 'package:restaurant_app/views/pages/accountSetting/accountSetting.dart';
 import 'package:restaurant_app/views/pages/category/categoryPage.dart';
 import 'package:restaurant_app/views/pages/earning/earning.dart';
@@ -59,7 +60,7 @@ class _TabBarViewDataState extends State<TabBarViewData> {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => OrdersHistory(),
+                          builder: (context) => OrderPage(),
                         ));
                   },
                   icon: ImageIcon(

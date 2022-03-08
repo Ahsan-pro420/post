@@ -20,6 +20,7 @@ class _OrdersHistoryState extends State<OrdersHistory> {
   List<OrderHistoryApi> order_history_list = [];
 
   List<OrderHistoryApi> order_history_active_list = [];
+  List<OrderHistoryApi> order_history_failed_list = [];
 
 //Seperate List for Active Status Order
   List<OrderHistoryApi> get_order_history_active() {
@@ -36,6 +37,21 @@ class _OrdersHistoryState extends State<OrdersHistory> {
     }
   }
 
+  //Seperate List for Failed Status Order
+  List<OrderHistoryApi> get_order_history_failed() {
+    if (order_history_list.isEmpty) {
+      return order_history_failed_list;
+    } else {
+      Iterable gettt = order_history_list
+          .where((element) => element.orderStatus!.contains("Failed"));
+      gettt.forEach((element) {
+        order_history_failed_list.add(element);
+      });
+
+      return order_history_failed_list;
+    }
+  }
+
   Future<List<OrderHistoryApi>> get_order_history_api() async {
     final response = await http.get(Uri.parse(
         "https://persecuted-admissio.000webhostapp.com/restaurant/restaurant_api/orders.php"));
@@ -43,12 +59,15 @@ class _OrdersHistoryState extends State<OrdersHistory> {
     if (response.statusCode == 200) {
       order_history_list.clear();
       order_history_active_list.clear();
+      order_history_failed_list.clear();
       for (Map i in data) {
         order_history_list.add(OrderHistoryApi.fromJson(i));
       }
       get_order_history_active();
+      get_order_history_failed();
       print(order_history_list.length);
       print(order_history_active_list.length);
+      print(order_history_failed_list.length);
       return order_history_list;
     } else {
       return order_history_list;
@@ -84,91 +103,99 @@ class _OrdersHistoryState extends State<OrdersHistory> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(
-        child: Container(
-          // height: displayHeight(context) - kBottomNavigationBarHeight,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(top: 40.0, left: 20),
-                child: Row(
-                  children: [
-                    GestureDetector(
-                        onTap: () {
-                          Navigator.pop(context);
-                        },
-                        child: Image.asset("assets/images/Vector.png")),
-                    SizedBox(
-                      width: displayWidth(context) * 0.25,
-                    ),
-                    Text(
-                      "Order History",
-                      style: GoogleFonts.ubuntu(
-                        textStyle: TextStyle(
-                          fontWeight: FontWeight.w400,
-                          fontSize: 18,
-                          color: Colors.black,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              //All&Complete&Failed
+      body: Container(
+        // height: displayHeight(context) - kBottomNavigationBarHeight,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            // Padding(
+            //   padding: const EdgeInsets.only(top: 20.0, left: 0),
+            //   // child:
+            //   //  Row(
+            //   //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            //   //   children: [
+            //   //     // GestureDetector(
+            //   //     //     onTap: () {
+            //   //     //       Navigator.pop(context);
+            //   //     //     },
+            //   //     //     child: Image.asset("assets/images/Vector.png")),
+            //   //     SizedBox(
+            //   //       width: displayWidth(context) * 0.25,
+            //   //     ),
+            //   //     Center(
+            //   //       child: Text(
+            //   //         "Order History",
+            //   //         style: GoogleFonts.ubuntu(
+            //   //           textStyle: TextStyle(
+            //   //             fontWeight: FontWeight.w400,
+            //   //             fontSize: 18,
+            //   //             color: Colors.black,
+            //   //           ),
+            //   //         ),
+            //   //       ),
+            //   //     ),
+            //   //     SizedBox(
+            //   //       width: displayWidth(context) * 0.25,
+            //   //     ),
+            //   //   ],
+            //   // ),
+            // ),
+            //All&Complete&Failed
 
-              Container(
-                padding: EdgeInsets.symmetric(
-                  vertical: 12.0,
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    TabButton(
-                      text: "All",
-                      pageNumber: 0,
-                      selectedPage: _selectedPage,
-                      onPressed: () {
-                        _changePage(0);
-                      },
-                    ),
-                    TabButton(
-                      text: "Completed",
-                      pageNumber: 1,
-                      selectedPage: _selectedPage,
-                      onPressed: () {
-                        print(order_history_active_list.length);
-                        print("object");
-                        _changePage(1);
-                      },
-                    ),
-                    TabButton(
-                      text: "Failed",
-                      pageNumber: 2,
-                      selectedPage: _selectedPage,
-                      onPressed: () {
-                        _changePage(2);
-                      },
-                    ),
-                  ],
-                ),
+            Container(
+              padding: EdgeInsets.only(
+                top: 12.0,
               ),
-              //search bar
-              Container(
-                margin: EdgeInsets.only(top: 25),
-                height: displayHeight(context) * 0.066,
-                width: displayWidth(context) / 1.17,
-                decoration: Constants.containerstyle(),
-                child: TextField(
-                  decoration: InputDecoration(
-                    border: InputBorder.none,
-                    prefixIcon: Image.asset("assets/images/Search.png"),
-                    suffixIcon: Image.asset("assets/images/Filter.png"),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  TabButton(
+                    text: "All",
+                    pageNumber: 0,
+                    selectedPage: _selectedPage,
+                    onPressed: () {
+                      _changePage(0);
+                    },
                   ),
-                ),
+                  TabButton(
+                    text: "Completed",
+                    pageNumber: 1,
+                    selectedPage: _selectedPage,
+                    onPressed: () {
+                      print(order_history_active_list.length);
+                      print("object");
+                      _changePage(1);
+                    },
+                  ),
+                  TabButton(
+                    text: "Failed",
+                    pageNumber: 2,
+                    selectedPage: _selectedPage,
+                    onPressed: () {
+                      _changePage(2);
+                    },
+                  ),
+                ],
               ),
-              Container(
-                height: 1000,
+            ),
+            //search bar
+            // Container(
+            //   margin: EdgeInsets.only(top: 25),
+            //   height: displayHeight(context) * 0.066,
+            //   width: displayWidth(context) / 1.17,
+            //   decoration: Constants.containerstyle(),
+            //   child: TextField(
+            //     decoration: InputDecoration(
+            //       border: InputBorder.none,
+            //       prefixIcon: Image.asset("assets/images/Search.png"),
+            //       suffixIcon: Image.asset("assets/images/Filter.png"),
+            //     ),
+            //   ),
+            // ),
+            Expanded(
+              child: Container(
+                margin: EdgeInsets.only(top: 0),
+                padding: EdgeInsets.symmetric(horizontal: 40),
                 child: PageView(
                   onPageChanged: (int page) {
                     setState(() {
@@ -181,50 +208,74 @@ class _OrdersHistoryState extends State<OrdersHistory> {
 
                     //All
 
-                    FutureBuilder(
-                        future: get_order_history_api(),
-                        builder: (context, snapshot) {
-                          if (!snapshot.hasData) {
-                            return Container(
-                                child: Center(
-                              child: CircularProgressIndicator(
-                                color: Colors.black,
-                              ),
-                            ));
-                          } else {
-                            return Container(
-                              child: ListView.builder(
-                                  shrinkWrap: true,
-                                  physics: NeverScrollableScrollPhysics(),
-                                  itemCount: order_history_list.length,
-                                  itemBuilder: (context, index) {
-                                    return order_history_tile(
-                                        context,
-                                        "zinger",
-                                        order_history_list[index]
-                                            .productName
-                                            .toString(),
-                                        order_history_list[index]
-                                            .totalAmount
-                                            .toString(),
-                                        order_history_list[index]
-                                            .date
-                                            .toString(),
-                                        order_history_list[index].orderId,
-                                        order_history_list[index].productImage1,
-                                        order_history_list[index].newPrice,
-                                        order_history_list[index].netAmount,
-                                        order_history_list[index].tax,
-                                        order_history_list[index].orderQuantity,
-                                        order_history_list[index].customerName,
-                                        order_history_list[index]
-                                            .customerAddress,
-                                        order_history_list[index]
-                                            .deliveryCharges);
-                                  }),
-                            );
-                          }
-                        })
+                    Container(
+                      child: FutureBuilder(
+                          future: get_order_history_api(),
+                          builder: (context, snapshot) {
+                            if (!snapshot.hasData) {
+                              return Center(
+                                child: Container(
+                                    child: CircularProgressIndicator(
+                                  color: Colors.black,
+                                )),
+                              );
+                            } else {
+                              return Container(
+                                child: ListView.builder(
+                                    shrinkWrap: true,
+                                    physics: NeverScrollableScrollPhysics(),
+                                    itemCount: order_history_list.length,
+                                    itemBuilder: (context, index) {
+                                      return Order_history_tile_class(
+                                          Cat_nam: "BBQ",
+                                          prod_nam: order_history_list[index]
+                                              .productName
+                                              .toString(),
+                                          ppricee: order_history_list[index]
+                                              .totalAmount
+                                              .toString(),
+                                          ddatee: order_history_list[index]
+                                              .date
+                                              .toString(),
+                                          iidd: order_history_list[index]
+                                              .orderId
+                                              .toString(),
+                                          iimagee: order_history_list[index]
+                                              .productImage1
+                                              .toString(),
+                                          nnew_pricee: order_history_list[index]
+                                              .newPrice
+                                              .toString(),
+                                          nnet_amountt:
+                                              order_history_list[index]
+                                                  .netAmount
+                                                  .toString(),
+                                          ttaxx: order_history_list[index]
+                                              .tax
+                                              .toString(),
+                                          qquantityy: order_history_list[index]
+                                              .orderQuantity
+                                              .toString(),
+                                          ccus_namee: order_history_list[index]
+                                              .customerName
+                                              .toString(),
+                                          ccus_address:
+                                              order_history_list[index]
+                                                  .customerAddress
+                                                  .toString(),
+                                          ddelivert_char:
+                                              order_history_list[index]
+                                                  .deliveryCharges
+                                                  .toString(),
+                                          oorder_statuss:
+                                              order_history_list[index]
+                                                  .orderStatus
+                                                  .toString());
+                                    }),
+                              );
+                            }
+                          }),
+                    )
 
                     // Container(
                     //   child: Column(children: [
@@ -249,33 +300,54 @@ class _OrdersHistoryState extends State<OrdersHistory> {
                                 physics: NeverScrollableScrollPhysics(),
                                 itemCount: order_history_active_list.length,
                                 itemBuilder: (context, index) {
-                                  return order_history_tile(
-                                      context,
-                                      "zinger",
-                                      order_history_active_list[index]
+                                  return Order_history_tile_class(
+                                      Cat_nam: "BBQ",
+                                      prod_nam: order_history_active_list[index]
                                           .productName
                                           .toString(),
-                                      order_history_active_list[index]
+                                      ppricee: order_history_active_list[index]
                                           .totalAmount
                                           .toString(),
-                                      order_history_active_list[index]
+                                      ddatee: order_history_active_list[index]
                                           .date
                                           .toString(),
-                                      order_history_active_list[index].orderId,
-                                      order_history_active_list[index]
-                                          .productImage1,
-                                      order_history_active_list[index].newPrice,
-                                      order_history_active_list[index]
-                                          .netAmount,
-                                      order_history_active_list[index].tax,
-                                      order_history_active_list[index]
-                                          .orderQuantity,
-                                      order_history_active_list[index]
-                                          .customerName,
-                                      order_history_active_list[index]
-                                          .customerAddress,
-                                      order_history_active_list[index]
-                                          .deliveryCharges);
+                                      iidd: order_history_active_list[index]
+                                          .orderId
+                                          .toString(),
+                                      iimagee: order_history_active_list[index]
+                                          .productImage1
+                                          .toString(),
+                                      nnew_pricee:
+                                          order_history_active_list[index]
+                                              .newPrice
+                                              .toString(),
+                                      nnet_amountt:
+                                          order_history_active_list[index]
+                                              .netAmount
+                                              .toString(),
+                                      ttaxx: order_history_active_list[index]
+                                          .tax
+                                          .toString(),
+                                      qquantityy:
+                                          order_history_active_list[index]
+                                              .orderQuantity
+                                              .toString(),
+                                      ccus_namee:
+                                          order_history_active_list[index]
+                                              .customerName
+                                              .toString(),
+                                      ccus_address:
+                                          order_history_active_list[index]
+                                              .customerAddress
+                                              .toString(),
+                                      ddelivert_char:
+                                          order_history_active_list[index]
+                                              .deliveryCharges
+                                              .toString(),
+                                      oorder_statuss:
+                                          order_history_active_list[index]
+                                              .orderStatus
+                                              .toString());
                                 }),
                           )
                           // order_history_tile(context),
@@ -287,23 +359,77 @@ class _OrdersHistoryState extends State<OrdersHistory> {
                     //Failed
 
                     Container(
-                      child: SingleChildScrollView(
-                        child: Column(
-                          children: [
-                            // order_history_tile(
-                            //     context, "mae", "fad", "af", "fa", "af", "afsd")
-                          ],
-                        ),
+                      child: Column(
+                        children: [
+                          Container(
+                            child: ListView.builder(
+                                shrinkWrap: true,
+                                physics: NeverScrollableScrollPhysics(),
+                                itemCount: order_history_failed_list.length,
+                                itemBuilder: (context, index) {
+                                  return Order_history_tile_class(
+                                      Cat_nam: "BBQ",
+                                      prod_nam: order_history_failed_list[index]
+                                          .productName
+                                          .toString(),
+                                      ppricee: order_history_failed_list[index]
+                                          .totalAmount
+                                          .toString(),
+                                      ddatee: order_history_failed_list[index]
+                                          .date
+                                          .toString(),
+                                      iidd: order_history_failed_list[index]
+                                          .orderId
+                                          .toString(),
+                                      iimagee: order_history_failed_list[index]
+                                          .productImage1
+                                          .toString(),
+                                      nnew_pricee:
+                                          order_history_failed_list[index]
+                                              .newPrice
+                                              .toString(),
+                                      nnet_amountt:
+                                          order_history_failed_list[index]
+                                              .netAmount
+                                              .toString(),
+                                      ttaxx: order_history_failed_list[index]
+                                          .tax
+                                          .toString(),
+                                      qquantityy:
+                                          order_history_failed_list[index]
+                                              .orderQuantity
+                                              .toString(),
+                                      ccus_namee:
+                                          order_history_failed_list[index]
+                                              .customerName
+                                              .toString(),
+                                      ccus_address:
+                                          order_history_failed_list[index]
+                                              .customerAddress
+                                              .toString(),
+                                      ddelivert_char:
+                                          order_history_failed_list[index]
+                                              .deliveryCharges
+                                              .toString(),
+                                      oorder_statuss:
+                                          order_history_failed_list[index]
+                                              .orderStatus
+                                              .toString());
+                                }),
+                          )
+                          // order_history_tile(context),
+                          // order_history_tile(context),
+                        ],
                       ),
                     ),
                   ],
                 ),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
-      bottomNavigationBar: TabBarViewData(),
+      // bottomNavigationBar: TabBarViewData(),
     );
   }
 }

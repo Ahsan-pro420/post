@@ -16,7 +16,8 @@ class OrderDetails extends StatefulWidget {
       quantityyy,
       cus_nameee,
       cus_addresss,
-      delivert_charr;
+      delivert_charr,
+      order_statusss;
   OrderDetails(
       {Key? key,
       required this.id,
@@ -30,7 +31,8 @@ class OrderDetails extends StatefulWidget {
       required this.taxxx,
       required this.quantityyy,
       required this.cus_addresss,
-      required this.cus_nameee})
+      required this.cus_nameee,
+      required this.order_statusss})
       : super(key: key);
 
   @override
@@ -38,6 +40,24 @@ class OrderDetails extends StatefulWidget {
 }
 
 class _OrderDetailsState extends State<OrderDetails> {
+  var Status_color = Colors.black;
+
+  void initState() {
+    super.initState();
+    status_color_check();
+  }
+
+  void status_color_check() {
+    print("Status _colorCheck");
+    if (widget.order_statusss == "Completed") {
+      Status_color = Colors.green;
+    } else if (widget.order_statusss == "Active") {
+      Status_color = Colors.purple;
+    } else {
+      Status_color = Colors.redAccent;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -119,20 +139,41 @@ class _OrderDetailsState extends State<OrderDetails> {
                           "assets/images/foodimages/halal_logo.png"),
                     ),
                     Positioned(
-                      top: displayHeight(context) * 0.232,
-                      left: displayWidth(context) * 0.040,
-                      // bottom: displayHeight(context)*0.049,
-                      child: Text(
-                        widget.name,
-                        style: GoogleFonts.ubuntu(
-                          textStyle: TextStyle(
-                            fontWeight: FontWeight.w700,
-                            fontSize: 24,
-                            color: Colors.white,
+                        top: displayHeight(context) * 0.232,
+                        left: displayWidth(context) * 0.040,
+                        // bottom: displayHeight(context)*0.049,
+                        child: Text(
+                          widget.name,
+                          style: GoogleFonts.ubuntu(
+                            textStyle: TextStyle(
+                              fontWeight: FontWeight.w700,
+                              fontSize: 24,
+                              color: Colors.white,
+                            ),
                           ),
+                        )),
+
+//order status
+
+                    Positioned(
+                      bottom: displayHeight(context) * 0.049,
+                      right: displayWidth(context) * 0.066,
+                      child: Container(
+                        padding: EdgeInsets.all(10),
+                        decoration: BoxDecoration(
+                            color: Status_color,
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(20))),
+                        child: Text(
+                          widget.order_statusss,
+                          style: GoogleFonts.ubuntu(
+                              textStyle: TextStyle(
+                                  fontWeight: FontWeight.w500,
+                                  fontSize: 14,
+                                  color: Colors.white)),
                         ),
                       ),
-                    ),
+                    )
                   ],
                 ),
               ),
@@ -158,6 +199,7 @@ class _OrderDetailsState extends State<OrderDetails> {
                             fontSize: 12,
                             fontWeight: FontWeight.w400,
                             color: Colors.black.withOpacity(0.5),
+                            // Colors.black.withOpacity(0.5),
                           ),
                         ),
                       ),
