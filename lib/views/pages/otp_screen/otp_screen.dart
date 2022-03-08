@@ -17,6 +17,8 @@ import 'package:restaurant_app/views/pages/calling_screen.dart';
 import 'package:restaurant_app/views/pages/signin/sign_in_page.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+var resend_color = Colors.black;
+
 class OTPSCREEN extends StatefulWidget {
   final String phone;
   OTPSCREEN(this.phone);
@@ -81,11 +83,14 @@ class _OTPSCREENState extends State<OTPSCREEN> {
     setState(() {
       if (resendtimer == true) {
         resendtimer = false;
+        resend_color = Colors.black;
+
         print("$resendtimer");
         Timer(
             Duration(seconds: 35),
             () => setState(() {
                   resendtimer = true;
+                  resend_color = Colors.red;
                 }));
       }
       // if (resendtimer == false) {
@@ -534,7 +539,7 @@ class _OTPSCREENState extends State<OTPSCREEN> {
                                 //     : () => print("$resendtimer"),
                                 child: Text(
                                   "resend",
-                                  style: TextStyle(color: Colors.red),
+                                  style: TextStyle(color: resend_color),
                                 ),
                               ),
                               // GestureDetector(

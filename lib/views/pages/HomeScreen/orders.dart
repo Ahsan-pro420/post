@@ -58,100 +58,101 @@ class _OrderPageState extends State<OrderPage> with TickerProviderStateMixin {
       drawer: Drawer(
         child: Drawer_widget(context),
       ),
-      body: Container(
-        height: displayHeight(context) - kBottomNavigationBarHeight,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(top: 30.0, left: 15.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  IconButton(
-                      icon: Image.asset("assets/images/Menu.png"),
-                      // icon: Icon(Icons.menu, color: Color(0xFF1f186f),),
-                      onPressed: () {
-                        _scaffoldKey.currentState!.openDrawer();
-                      }),
-                  SizedBox(
-                    width: displayWidth(context) * 0.25,
-                  ),
-                  Text(
-                    "Orders",
-                    style: GoogleFonts.ubuntu(
-                        textStyle: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.w400,
-                      color: Color.fromRGBO(0, 0, 0, 1),
-                    )),
-                    textAlign: TextAlign.center,
-                  )
-                ],
-              ),
-            ),
-            Container(
-              padding: EdgeInsets.symmetric(
-                vertical: 12.0,
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  TabButton(
-                    text: "Orders",
-                    pageNumber: 0,
-                    selectedPage: _selectPage,
-                    onPressed: () {
-                      _changePage(0);
-                    },
-                  ),
-                  TabButton(
-                    text: "Scheduled",
-                    pageNumber: 1,
-                    selectedPage: _selectPage,
-                    onPressed: () {
-                      _changePage(1);
-                    },
-                  ),
-                  TabButton(
-                    text: "History",
-                    pageNumber: 2,
-                    selectedPage: _selectPage,
-                    onPressed: () {
-                      _changePage(2);
-                    },
-                  ),
-                ],
-              ),
-            ),
-            //search bar
-            Container(
-              margin: EdgeInsets.only(top: 25, left: 25),
-              height: displayHeight(context) * 0.066,
-              width: displayWidth(context) / 1.17,
-              decoration: Constants.containerstyle(),
-              child: TextField(
-                decoration: InputDecoration(
-                  border: InputBorder.none,
-                  prefixIcon: Image.asset("assets/images/Search.png"),
-                  suffixIcon: Image.asset("assets/images/Filter.png"),
+      body: SingleChildScrollView(
+        child: Container(
+          height: 1300,
+          // height: displayHeight(context) - kBottomNavigationBarHeight,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(top: 30.0, left: 15.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    IconButton(
+                        icon: Image.asset("assets/images/Menu.png"),
+                        // icon: Icon(Icons.menu, color: Color(0xFF1f186f),),
+                        onPressed: () {
+                          _scaffoldKey.currentState!.openDrawer();
+                        }),
+                    SizedBox(
+                      width: displayWidth(context) * 0.25,
+                    ),
+                    Text(
+                      "Orders",
+                      style: GoogleFonts.ubuntu(
+                          textStyle: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w400,
+                        color: Color.fromRGBO(0, 0, 0, 1),
+                      )),
+                      textAlign: TextAlign.center,
+                    )
+                  ],
                 ),
               ),
-            ),
-            Expanded(
-              child: PageView(
-                onPageChanged: (int page) {
-                  setState(() {
-                    _selectPage = page;
-                  });
-                },
-                controller: _pageControle,
-                children: [
-//Orders Page
-                  Container(
-                    // color: Colors.amber,
-                    margin: EdgeInsets.only(top: 5),
-                    child: SingleChildScrollView(
+              Container(
+                padding: EdgeInsets.symmetric(
+                  vertical: 12.0,
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    TabButton(
+                      text: "Orders",
+                      pageNumber: 0,
+                      selectedPage: _selectPage,
+                      onPressed: () {
+                        _changePage(0);
+                      },
+                    ),
+                    TabButton(
+                      text: "Scheduled",
+                      pageNumber: 1,
+                      selectedPage: _selectPage,
+                      onPressed: () {
+                        _changePage(1);
+                      },
+                    ),
+                    TabButton(
+                      text: "History",
+                      pageNumber: 2,
+                      selectedPage: _selectPage,
+                      onPressed: () {
+                        _changePage(2);
+                      },
+                    ),
+                  ],
+                ),
+              ),
+              //search bar
+              Container(
+                margin: EdgeInsets.only(top: 25, left: 25),
+                height: displayHeight(context) * 0.066,
+                width: displayWidth(context) / 1.17,
+                decoration: Constants.containerstyle(),
+                child: TextField(
+                  decoration: InputDecoration(
+                    border: InputBorder.none,
+                    prefixIcon: Image.asset("assets/images/Search.png"),
+                    suffixIcon: Image.asset("assets/images/Filter.png"),
+                  ),
+                ),
+              ),
+              Expanded(
+                child: PageView(
+                  onPageChanged: (int page) {
+                    setState(() {
+                      _selectPage = page;
+                    });
+                  },
+                  controller: _pageControle,
+                  children: [
+                    //Orders Page
+                    Container(
+                      // color: Colors.amber,
+                      margin: EdgeInsets.only(top: 5),
                       child: Column(
                         children: [
                           order_tile(context),
@@ -160,29 +161,36 @@ class _OrderPageState extends State<OrderPage> with TickerProviderStateMixin {
                         ],
                       ),
                     ),
-                  ),
-//Schedule
-                  Container(
-                    child: SingleChildScrollView(
+                    //Schedule
+                    Container(
                       child: Column(
                         children: [order_tile(context), order_tile(context)],
                       ),
                     ),
-                  ),
-                  Container(
-                    child: SingleChildScrollView(
-                      child: Column(
-                        children: [
-                          order_tile(context),
-                          orderr(context, 3, 400, "fastfood", "Address")
-                        ],
-                      ),
-                    ),
-                  ),
-                ],
+                    //History
+
+                    Container(
+                      child: OrdersHistory(),
+                    )
+                    // Container(
+                    //   height: 1000,
+                    //   child: SingleChildScrollView(
+                    //     child: Column(
+                    //       children: [
+                    //         OrdersHistory()
+                    //         // order_tile(context),
+                    //         // orderr(context, 3, 400, "fastfood", "Address"),
+                    //         // orderr(context, 3, 400, "fastfood", "Address"),
+                    //         // orderr(context, 3, 400, "fastfood", "Address"),
+                    //       ],
+                    //     ),
+                    //   ),
+                    // ),
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
       // bottomNavigationBar: TabBarViewData(),
