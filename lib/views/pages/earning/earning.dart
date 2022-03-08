@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:restaurant_app/Theme/Theme.dart';
 import 'package:restaurant_app/utills/Displaywidth.dart';
+import 'package:restaurant_app/views/pages/earning/earning_widget.dart';
 import 'package:restaurant_app/views/widgets/drawer_widget.dart';
 import 'package:restaurant_app/views/widgets/tab_bar_view.dart';
 
@@ -22,9 +23,10 @@ class _EarningState extends State<Earning> {
         child: Drawer_widget(context),
       ),
       body: Container(
-        height: displayHeight(context) - kBottomNavigationBarHeight,
+        //height: displayHeight(context) - kBottomNavigationBarHeight,
         width: displayWidth(context),
         child: SingleChildScrollView(
+          scrollDirection: Axis.vertical,
           child: Column(
             children: [
               Padding(
@@ -123,336 +125,357 @@ class _EarningState extends State<Earning> {
                   ),
                 ),
               ),
-              Container(
-                margin: EdgeInsets.only(left: 20, top: 20),
-                alignment: Alignment.centerLeft,
-                child: Text(
-                  "Today",
-                  style: Constants.blacknormalstyle(),
-                ),
-              ),
-              SizedBox(
-                height: 8,
-              ),
-              Container(
-                height: displayHeight(context) * 0.09,
-                width: displayWidth(context) / 1.1,
-                decoration: Constants.containerstyle(),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(
-                        top: 12.0,
-                        left: 15,
-                      ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            "Order ID",
-                            style: GoogleFonts.ubuntu(
-                                textStyle: TextStyle(
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.w500,
-                                    color: Color.fromRGBO(0, 0, 0, 1))),
-                          ),
-                          Text(
-                            "12:32 PM",
-                            style: GoogleFonts.ubuntu(
-                                textStyle: TextStyle(
-                                    fontSize: 12,
-                                    fontWeight: FontWeight.w400,
-                                    color: Color.fromRGBO(121, 118, 125, 1))),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(right: 12.0),
-                      child: Text(
-                        "\$12.00",
-                        style: GoogleFonts.ubuntu(
-                            textStyle: TextStyle(
-                                fontSize: 18,
-                                fontWeight: FontWeight.w700,
-                                color: Color.fromRGBO(94, 207, 99, 1))),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              SizedBox(
-                height: 8,
-              ),
-              Container(
-                height: displayHeight(context) * 0.09,
-                width: displayWidth(context) / 1.1,
-                decoration: Constants.containerstyle(),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(
-                        top: 12.0,
-                        left: 15,
-                      ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            "54684132",
-                            style: GoogleFonts.ubuntu(
-                                textStyle: TextStyle(
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.w500,
-                                    color: Color.fromRGBO(0, 0, 0, 1))),
-                          ),
-                          Text(
-                            "12:34 PM",
-                            style: GoogleFonts.ubuntu(
-                                textStyle: TextStyle(
-                                    fontSize: 12,
-                                    fontWeight: FontWeight.w400,
-                                    color: Color.fromRGBO(121, 118, 125, 1))),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(right: 12.0),
-                      child: Text(
-                        "\$50.00",
-                        style: GoogleFonts.ubuntu(
-                            textStyle: TextStyle(
-                                fontSize: 18,
-                                fontWeight: FontWeight.w700,
-                                color: Color.fromRGBO(94, 207, 99, 1))),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              Container(
-                margin: EdgeInsets.only(left: 20, top: 20),
-                alignment: Alignment.centerLeft,
-                child: Text(
-                  "02 June,2021",
-                  style: Constants.blacknormalstyle(),
-                ),
-              ),
-              SizedBox(
-                height: 8,
-              ),
-              Container(
-                height: displayHeight(context) * 0.09,
-                width: displayWidth(context) / 1.1,
-                decoration: Constants.containerstyle(),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(
-                        top: 12.0,
-                        left: 15,
-                      ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            "Order ID",
-                            style: GoogleFonts.ubuntu(
-                                textStyle: TextStyle(
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.w500,
-                                    color: Color.fromRGBO(0, 0, 0, 1))),
-                          ),
-                          Text(
-                            "12:32 PM",
-                            style: GoogleFonts.ubuntu(
-                                textStyle: TextStyle(
-                                    fontSize: 12,
-                                    fontWeight: FontWeight.w400,
-                                    color: Color.fromRGBO(121, 118, 125, 1))),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(right: 12.0),
-                      child: Text(
-                        "\$12.00",
-                        style: GoogleFonts.ubuntu(
-                            textStyle: TextStyle(
-                                fontSize: 18,
-                                fontWeight: FontWeight.w700,
-                                color: Color.fromRGBO(94, 207, 99, 1))),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              SizedBox(
-                height: 8,
-              ),
-              Container(
-                height: displayHeight(context) * 0.09,
-                width: displayWidth(context) / 1.1,
-                decoration: Constants.containerstyle(),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(
-                        top: 12.0,
-                        left: 15,
-                      ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            "54684132",
-                            style: GoogleFonts.ubuntu(
-                                textStyle: TextStyle(
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.w500,
-                                    color: Color.fromRGBO(0, 0, 0, 1))),
-                          ),
-                          Text(
-                            "12:34 PM",
-                            style: GoogleFonts.ubuntu(
-                                textStyle: TextStyle(
-                                    fontSize: 12,
-                                    fontWeight: FontWeight.w400,
-                                    color: Color.fromRGBO(121, 118, 125, 1))),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(right: 12.0),
-                      child: Text(
-                        "\$50.00",
-                        style: GoogleFonts.ubuntu(
-                            textStyle: TextStyle(
-                                fontSize: 18,
-                                fontWeight: FontWeight.w700,
-                                color: Color.fromRGBO(94, 207, 99, 1))),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              Container(
-                margin: EdgeInsets.only(left: 20, top: 20),
-                alignment: Alignment.centerLeft,
-                child: Text(
-                  "01 June, 2021",
-                  style: Constants.blacknormalstyle(),
-                ),
-              ),
-              SizedBox(
-                height: 8,
-              ),
-              Container(
-                height: displayHeight(context) * 0.09,
-                width: displayWidth(context) / 1.1,
-                decoration: Constants.containerstyle(),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(
-                        top: 12.0,
-                        left: 15,
-                      ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            "Order ID",
-                            style: GoogleFonts.ubuntu(
-                                textStyle: TextStyle(
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.w500,
-                                    color: Color.fromRGBO(0, 0, 0, 1))),
-                          ),
-                          Text(
-                            "12:32 PM",
-                            style: GoogleFonts.ubuntu(
-                                textStyle: TextStyle(
-                                    fontSize: 12,
-                                    fontWeight: FontWeight.w400,
-                                    color: Color.fromRGBO(121, 118, 125, 1))),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(right: 12.0),
-                      child: Text(
-                        "\$12.00",
-                        style: GoogleFonts.ubuntu(
-                            textStyle: TextStyle(
-                                fontSize: 18,
-                                fontWeight: FontWeight.w700,
-                                color: Color.fromRGBO(94, 207, 99, 1))),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              SizedBox(
-                height: 8,
-              ),
-              Container(
-                height: displayHeight(context) * 0.09,
-                width: displayWidth(context) / 1.1,
-                decoration: Constants.containerstyle(),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(
-                        top: 12.0,
-                        left: 15,
-                      ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            "54684132",
-                            style: GoogleFonts.ubuntu(
-                                textStyle: TextStyle(
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.w500,
-                                    color: Color.fromRGBO(0, 0, 0, 1))),
-                          ),
-                          Text(
-                            "12:34 PM",
-                            style: GoogleFonts.ubuntu(
-                                textStyle: TextStyle(
-                                    fontSize: 12,
-                                    fontWeight: FontWeight.w400,
-                                    color: Color.fromRGBO(121, 118, 125, 1))),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(right: 12.0),
-                      child: Text(
-                        "\$50.00",
-                        style: GoogleFonts.ubuntu(
-                            textStyle: TextStyle(
-                                fontSize: 18,
-                                fontWeight: FontWeight.w700,
-                                color: Color.fromRGBO(94, 207, 99, 1))),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
+              ListView.builder(
+                  physics: NeverScrollableScrollPhysics(),
+                  scrollDirection: Axis.vertical,
+                  shrinkWrap: true,
+                  itemCount: 6,
+                  itemBuilder: (context, index) {
+                    return Earning_widget1(context);
+                  }),
+              // SizedBox(
+              //   height: 8,
+              // ),
+              // Container(
+              //   //height: 1000,
+              //   child: ListView.builder(
+              //       scrollDirection: Axis.vertical,
+              //       shrinkWrap: true,
+              //       itemCount: 6,
+              //       itemBuilder: (context, index) {
+              //         return Earning_widget2(context);
+              //       }),
+              // )
+              // Container(
+              //   margin: EdgeInsets.only(left: 20, top: 20),
+              //   alignment: Alignment.centerLeft,
+              //   child: Text(
+              //     "Today",
+              //     style: Constants.blacknormalstyle(),
+              //   ),
+              // ),
+              // SizedBox(
+              //   height: 8,
+              // ),
+              // Container(
+              //   height: displayHeight(context) * 0.09,
+              //   width: displayWidth(context) / 1.1,
+              //   decoration: Constants.containerstyle(),
+              //   child: Row(
+              //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              //     children: [
+              //       Padding(
+              //         padding: const EdgeInsets.only(
+              //           top: 12.0,
+              //           left: 15,
+              //         ),
+              //         child: Column(
+              //           crossAxisAlignment: CrossAxisAlignment.start,
+              //           children: [
+              //             Text(
+              //               "Order ID",
+              //               style: GoogleFonts.ubuntu(
+              //                   textStyle: TextStyle(
+              //                       fontSize: 16,
+              //                       fontWeight: FontWeight.w500,
+              //                       color: Color.fromRGBO(0, 0, 0, 1))),
+              //             ),
+              //             Text(
+              //               "12:32 PM",
+              //               style: GoogleFonts.ubuntu(
+              //                   textStyle: TextStyle(
+              //                       fontSize: 12,
+              //                       fontWeight: FontWeight.w400,
+              //                       color: Color.fromRGBO(121, 118, 125, 1))),
+              //             ),
+              //           ],
+              //         ),
+              //       ),
+              //       Padding(
+              //         padding: const EdgeInsets.only(right: 12.0),
+              //         child: Text(
+              //           "\$12.00",
+              //           style: GoogleFonts.ubuntu(
+              //               textStyle: TextStyle(
+              //                   fontSize: 18,
+              //                   fontWeight: FontWeight.w700,
+              //                   color: Color.fromRGBO(94, 207, 99, 1))),
+              //         ),
+              //       ),
+              //     ],
+              //   ),
+              // ),
+              // SizedBox(
+              //   height: 8,
+              // ),
+              // Container(
+              //   height: displayHeight(context) * 0.09,
+              //   width: displayWidth(context) / 1.1,
+              //   decoration: Constants.containerstyle(),
+              //   child: Row(
+              //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              //     children: [
+              //       Padding(
+              //         padding: const EdgeInsets.only(
+              //           top: 12.0,
+              //           left: 15,
+              //         ),
+              //         child: Column(
+              //           crossAxisAlignment: CrossAxisAlignment.start,
+              //           children: [
+              //             Text(
+              //               "54684132",
+              //               style: GoogleFonts.ubuntu(
+              //                   textStyle: TextStyle(
+              //                       fontSize: 16,
+              //                       fontWeight: FontWeight.w500,
+              //                       color: Color.fromRGBO(0, 0, 0, 1))),
+              //             ),
+              //             Text(
+              //               "12:34 PM",
+              //               style: GoogleFonts.ubuntu(
+              //                   textStyle: TextStyle(
+              //                       fontSize: 12,
+              //                       fontWeight: FontWeight.w400,
+              //                       color: Color.fromRGBO(121, 118, 125, 1))),
+              //             ),
+              //           ],
+              //         ),
+              //       ),
+              //       Padding(
+              //         padding: const EdgeInsets.only(right: 12.0),
+              //         child: Text(
+              //           "\$50.00",
+              //           style: GoogleFonts.ubuntu(
+              //               textStyle: TextStyle(
+              //                   fontSize: 18,
+              //                   fontWeight: FontWeight.w700,
+              //                   color: Color.fromRGBO(94, 207, 99, 1))),
+              //         ),
+              //       ),
+              //     ],
+              //   ),
+              // ),
+              // Container(
+              //   margin: EdgeInsets.only(left: 20, top: 20),
+              //   alignment: Alignment.centerLeft,
+              //   child: Text(
+              //     "02 June,2021",
+              //     style: Constants.blacknormalstyle(),
+              //   ),
+              // ),
+              // SizedBox(
+              //   height: 8,
+              // ),
+              // Container(
+              //   height: displayHeight(context) * 0.09,
+              //   width: displayWidth(context) / 1.1,
+              //   decoration: Constants.containerstyle(),
+              //   child: Row(
+              //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              //     children: [
+              //       Padding(
+              //         padding: const EdgeInsets.only(
+              //           top: 12.0,
+              //           left: 15,
+              //         ),
+              //         child: Column(
+              //           crossAxisAlignment: CrossAxisAlignment.start,
+              //           children: [
+              //             Text(
+              //               "Order ID",
+              //               style: GoogleFonts.ubuntu(
+              //                   textStyle: TextStyle(
+              //                       fontSize: 16,
+              //                       fontWeight: FontWeight.w500,
+              //                       color: Color.fromRGBO(0, 0, 0, 1))),
+              //             ),
+              //             Text(
+              //               "12:32 PM",
+              //               style: GoogleFonts.ubuntu(
+              //                   textStyle: TextStyle(
+              //                       fontSize: 12,
+              //                       fontWeight: FontWeight.w400,
+              //                       color: Color.fromRGBO(121, 118, 125, 1))),
+              //             ),
+              //           ],
+              //         ),
+              //       ),
+              //       Padding(
+              //         padding: const EdgeInsets.only(right: 12.0),
+              //         child: Text(
+              //           "\$12.00",
+              //           style: GoogleFonts.ubuntu(
+              //               textStyle: TextStyle(
+              //                   fontSize: 18,
+              //                   fontWeight: FontWeight.w700,
+              //                   color: Color.fromRGBO(94, 207, 99, 1))),
+              //         ),
+              //       ),
+              //     ],
+              //   ),
+              // ),
+              // SizedBox(
+              //   height: 8,
+              // ),
+              // Container(
+              //   height: displayHeight(context) * 0.09,
+              //   width: displayWidth(context) / 1.1,
+              //   decoration: Constants.containerstyle(),
+              //   child: Row(
+              //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              //     children: [
+              //       Padding(
+              //         padding: const EdgeInsets.only(
+              //           top: 12.0,
+              //           left: 15,
+              //         ),
+              //         child: Column(
+              //           crossAxisAlignment: CrossAxisAlignment.start,
+              //           children: [
+              //             Text(
+              //               "54684132",
+              //               style: GoogleFonts.ubuntu(
+              //                   textStyle: TextStyle(
+              //                       fontSize: 16,
+              //                       fontWeight: FontWeight.w500,
+              //                       color: Color.fromRGBO(0, 0, 0, 1))),
+              //             ),
+              //             Text(
+              //               "12:34 PM",
+              //               style: GoogleFonts.ubuntu(
+              //                   textStyle: TextStyle(
+              //                       fontSize: 12,
+              //                       fontWeight: FontWeight.w400,
+              //                       color: Color.fromRGBO(121, 118, 125, 1))),
+              //             ),
+              //           ],
+              //         ),
+              //       ),
+              //       Padding(
+              //         padding: const EdgeInsets.only(right: 12.0),
+              //         child: Text(
+              //           "\$50.00",
+              //           style: GoogleFonts.ubuntu(
+              //               textStyle: TextStyle(
+              //                   fontSize: 18,
+              //                   fontWeight: FontWeight.w700,
+              //                   color: Color.fromRGBO(94, 207, 99, 1))),
+              //         ),
+              //       ),
+              //     ],
+              //   ),
+              // ),
+              // Container(
+              //   margin: EdgeInsets.only(left: 20, top: 20),
+              //   alignment: Alignment.centerLeft,
+              //   child: Text(
+              //     "01 June, 2021",
+              //     style: Constants.blacknormalstyle(),
+              //   ),
+              // ),
+              // SizedBox(
+              //   height: 8,
+              // ),
+              // Container(
+              //   height: displayHeight(context) * 0.09,
+              //   width: displayWidth(context) / 1.1,
+              //   decoration: Constants.containerstyle(),
+              //   child: Row(
+              //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              //     children: [
+              //       Padding(
+              //         padding: const EdgeInsets.only(
+              //           top: 12.0,
+              //           left: 15,
+              //         ),
+              //         child: Column(
+              //           crossAxisAlignment: CrossAxisAlignment.start,
+              //           children: [
+              //             Text(
+              //               "Order ID",
+              //               style: GoogleFonts.ubuntu(
+              //                   textStyle: TextStyle(
+              //                       fontSize: 16,
+              //                       fontWeight: FontWeight.w500,
+              //                       color: Color.fromRGBO(0, 0, 0, 1))),
+              //             ),
+              //             Text(
+              //               "12:32 PM",
+              //               style: GoogleFonts.ubuntu(
+              //                   textStyle: TextStyle(
+              //                       fontSize: 12,
+              //                       fontWeight: FontWeight.w400,
+              //                       color: Color.fromRGBO(121, 118, 125, 1))),
+              //             ),
+              //           ],
+              //         ),
+              //       ),
+              //       Padding(
+              //         padding: const EdgeInsets.only(right: 12.0),
+              //         child: Text(
+              //           "\$12.00",
+              //           style: GoogleFonts.ubuntu(
+              //               textStyle: TextStyle(
+              //                   fontSize: 18,
+              //                   fontWeight: FontWeight.w700,
+              //                   color: Color.fromRGBO(94, 207, 99, 1))),
+              //         ),
+              //       ),
+              //     ],
+              //   ),
+              // ),
+              // SizedBox(
+              //   height: 8,
+              // ),
+              // Container(
+              //   height: displayHeight(context) * 0.09,
+              //   width: displayWidth(context) / 1.1,
+              //   decoration: Constants.containerstyle(),
+              //   child: Row(
+              //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              //     children: [
+              //       Padding(
+              //         padding: const EdgeInsets.only(
+              //           top: 12.0,
+              //           left: 15,
+              //         ),
+              //         child: Column(
+              //           crossAxisAlignment: CrossAxisAlignment.start,
+              //           children: [
+              //             Text(
+              //               "54684132",
+              //               style: GoogleFonts.ubuntu(
+              //                   textStyle: TextStyle(
+              //                       fontSize: 16,
+              //                       fontWeight: FontWeight.w500,
+              //                       color: Color.fromRGBO(0, 0, 0, 1))),
+              //             ),
+              //             Text(
+              //               "12:34 PM",
+              //               style: GoogleFonts.ubuntu(
+              //                   textStyle: TextStyle(
+              //                       fontSize: 12,
+              //                       fontWeight: FontWeight.w400,
+              //                       color: Color.fromRGBO(121, 118, 125, 1))),
+              //             ),
+              //           ],
+              //         ),
+              //       ),
+              //       Padding(
+              //         padding: const EdgeInsets.only(right: 12.0),
+              //         child: Text(
+              //           "\$50.00",
+              //           style: GoogleFonts.ubuntu(
+              //               textStyle: TextStyle(
+              //                   fontSize: 18,
+              //                   fontWeight: FontWeight.w700,
+              //                   color: Color.fromRGBO(94, 207, 99, 1))),
+              //         ),
+              //       ),
+              //     ],
+              //   ),
+              // ),
             ],
           ),
         ),
