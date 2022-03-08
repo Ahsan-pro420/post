@@ -58,7 +58,8 @@ Widget sub_category_tile1(context) {
     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
     crossAxisAlignment: CrossAxisAlignment.center,
     children: [
-      Container(
+      GestureDetector(
+        child: Container(
           alignment: Alignment.center,
           margin:
               EdgeInsets.only(right: MediaQuery.of(context).size.width * 0.04),
@@ -66,23 +67,32 @@ Widget sub_category_tile1(context) {
             borderRadius: BorderRadius.circular(80),
             color: Colors.black,
           ),
-          child: ElevatedButton(
-            style: ButtonStyle(
-              shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                  RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(18.0),
-                      side: BorderSide(color: Colors.black))),
-              backgroundColor: MaterialStateProperty.all(Colors.black),
-            ),
-            onPressed: () {},
-            child: Text(
-              "Category 1",
-              style: GoogleFonts.ubuntu(
-                  textStyle: TextStyle(
-                color: Colors.white,
-              )),
-            ),
-          )),
+          child: Text(
+            "Category 1",
+            style: GoogleFonts.ubuntu(
+                textStyle: TextStyle(
+              color: Colors.white,
+            )),
+          ),
+          // child: ElevatedButton(
+          //   style: ButtonStyle(
+          //     shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+          //         RoundedRectangleBorder(
+          //             borderRadius: BorderRadius.circular(18.0),
+          //             side: BorderSide(color: Colors.black))),
+          //     backgroundColor: MaterialStateProperty.all(Colors.black),
+          //   ),
+          //   onPressed: () {},
+          //   child: Text(
+          //     "Category 1",
+          //     style: GoogleFonts.ubuntu(
+          //         textStyle: TextStyle(
+          //       color: Colors.white,
+          //     )),
+          //   ),
+          // )
+        ),
+      ),
     ],
   );
 }
