@@ -157,7 +157,7 @@ Widget order_history_tile(
                   )),
                 ),
                 SizedBox(
-                  height: 8,
+                  height: MediaQuery.of(context).size.height * 0.008,
                 ),
                 Text(
                   prod_name,
@@ -169,7 +169,7 @@ Widget order_history_tile(
                   )),
                 ),
                 SizedBox(
-                  height: 9,
+                  height: MediaQuery.of(context).size.height * 0.015,
                 ),
                 Text(
                   "$datee, 22:32",

@@ -70,7 +70,7 @@ Widget order_tile(context) {
         ),
         Container(
           margin: EdgeInsets.only(
-            top: 10,
+            top: 5,
             left: 15,
             right: 15,
           ),

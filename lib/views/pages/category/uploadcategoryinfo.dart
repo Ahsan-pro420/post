@@ -332,7 +332,7 @@ class _CategoryInfoState extends State<CategoryInfo> {
                             _showPicker(context);
                           },
                           child: Container(
-                              height: 30,
+                              height: MediaQuery.of(context).size.height * 0.04,
                               decoration: BoxDecoration(
                                   color: Colors.red,
                                   border: Border.all(
@@ -356,7 +356,7 @@ class _CategoryInfoState extends State<CategoryInfo> {
               //   ),
               // ),
               Container(
-                height: 20,
+                height: MediaQuery.of(context).size.height * 0.035,
                 alignment: Alignment.center,
                 child: Text(
                   "Upload Product Picture",
@@ -369,10 +369,10 @@ class _CategoryInfoState extends State<CategoryInfo> {
                 ),
               ),
               SizedBox(
-                height: 30,
+                height: MediaQuery.of(context).size.height * 0.06,
               ),
               Container(
-                  height: displayHeight(context) * 0.1,
+                  height: displayHeight(context) * 0.15,
                   width: displayWidth(context) * 0.8,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -391,7 +391,7 @@ class _CategoryInfoState extends State<CategoryInfo> {
                     ],
                   )),
               SizedBox(
-                height: 70,
+                height: MediaQuery.of(context).size.height * 0.06,
               ),
               Container(
                 alignment: Alignment.center,

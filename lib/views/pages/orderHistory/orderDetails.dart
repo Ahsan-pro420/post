@@ -178,7 +178,7 @@ class _OrderDetailsState extends State<OrderDetails> {
                 ),
               ),
               SizedBox(
-                height: 20,
+                height: MediaQuery.of(context).size.height * 0.04,
               ),
 
 //Order Number Cart
@@ -220,7 +220,7 @@ class _OrderDetailsState extends State<OrderDetails> {
                         padding: const EdgeInsets.only(right: 22.0),
                         child: Divider(
                           color: Color.fromRGBO(0, 0, 0, 1).withOpacity(0.3),
-                          height: 0.5,
+                          height: MediaQuery.of(context).size.height * 0.003,
                         ),
                       ),
                       Padding(
@@ -250,26 +250,46 @@ class _OrderDetailsState extends State<OrderDetails> {
                           ),
                         ),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.only(right: 22.0),
-                        child: Divider(
-                          color: Color.fromRGBO(0, 0, 0, 1).withOpacity(0.3),
-                          height: 0.5,
-                        ),
+                      // Padding(
+                      //   padding: const EdgeInsets.only(right: 22.0),
+                      //   child: Divider(
+                      //     color: Color.fromRGBO(0, 0, 0, 1).withOpacity(0.3),
+                      //     height: 0.5,
+                      //   ),
+                      // ),
+                      Divider(
+                        height: MediaQuery.of(context).size.height * 0.003,
                       ),
-                      Padding(
-                        padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
-                        child: Text(
-                          "Delivery Address",
-                          style: GoogleFonts.ubuntu(
-                            textStyle: TextStyle(
-                              fontSize: 12,
-                              fontWeight: FontWeight.w400,
-                              color: Colors.black.withOpacity(0.5),
-                            ),
+                      // Padding(
+                      //   padding: const EdgeInsets.only(bottom: 5.0),
+                      //child:
+                      Text(
+                        "Delivery Address",
+                        style: GoogleFonts.ubuntu(
+                          textStyle: TextStyle(
+                            fontSize: 12,
+                            fontWeight: FontWeight.w400,
+                            color: Colors.black.withOpacity(0.5),
                           ),
                         ),
                       ),
+<<<<<<< HEAD
+                      SizedBox(
+                        height: MediaQuery.of(context).size.height * 0.01,
+                      ),
+                      //),
+                      // Padding(
+                      //   padding:
+                      //       const EdgeInsets.only(bottom: 16.0, right: 25.0),
+                      //   child:
+                      Text(
+                        "10 Paya Lebar Rd, #B1-14 PLQ Mall, Singaore 409057",
+                        style: GoogleFonts.ubuntu(
+                          textStyle: TextStyle(
+                            fontWeight: FontWeight.w400,
+                            fontSize: 15,
+                            color: Color.fromRGBO(0, 0, 0, 1),
+=======
                       Padding(
                         padding:
                             const EdgeInsets.only(bottom: 16.0, right: 25.0),
@@ -281,14 +301,16 @@ class _OrderDetailsState extends State<OrderDetails> {
                               fontSize: 15,
                               color: Color.fromRGBO(0, 0, 0, 1),
                             ),
+>>>>>>> ea13d84176704906bd7fa7e20f553b6e903b7aee
                           ),
                         ),
                       ),
+                      //),
                       Padding(
                         padding: const EdgeInsets.only(right: 22.0),
                         child: Divider(
                           color: Color.fromRGBO(0, 0, 0, 1).withOpacity(0.3),
-                          height: 0.5,
+                          height: MediaQuery.of(context).size.height * 0.01,
                         ),
                       ),
                     ],
@@ -297,7 +319,7 @@ class _OrderDetailsState extends State<OrderDetails> {
               ),
 
               SizedBox(
-                height: 20,
+                height: MediaQuery.of(context).size.height * 0.05,
               ),
 
 //Product Name
@@ -334,12 +356,16 @@ class _OrderDetailsState extends State<OrderDetails> {
                           ),
                         ],
                       ),
-                      Padding(
-                        padding: const EdgeInsets.only(top: 16.0, bottom: 16.0),
-                        child: Divider(
-                          color: Color.fromRGBO(0, 0, 0, 1).withOpacity(0.3),
-                          height: 0.5,
-                        ),
+                      // Padding(
+                      //   padding: const EdgeInsets.only(top: 16.0, bottom: 16.0),
+                      //   child: Divider(
+                      //     color: Color.fromRGBO(0, 0, 0, 1).withOpacity(0.3),
+                      //     height: 0.5,
+                      //   ),
+                      // ),
+                      Divider(
+                        color: Color.fromRGBO(0, 0, 0, 1).withOpacity(0.3),
+                        height: MediaQuery.of(context).size.height * 0.04,
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -359,7 +385,7 @@ class _OrderDetailsState extends State<OrderDetails> {
                         ],
                       ),
                       SizedBox(
-                        height: 16,
+                        height: MediaQuery.of(context).size.height * 0.02,
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -379,7 +405,7 @@ class _OrderDetailsState extends State<OrderDetails> {
                         ],
                       ),
                       SizedBox(
-                        height: 16,
+                        height: MediaQuery.of(context).size.height * 0.03,
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -398,13 +424,14 @@ class _OrderDetailsState extends State<OrderDetails> {
                           ),
                         ],
                       ),
-                      Padding(
-                        padding: const EdgeInsets.only(top: 16.0, bottom: 14.0),
-                        child: Divider(
-                          color: Color.fromRGBO(0, 0, 0, 1).withOpacity(0.3),
-                          height: 0.5,
-                        ),
-                      ),
+                      // Padding(
+                      //   padding: const EdgeInsets.only(top: 16.0, bottom: 7.0),
+                      //   child: Divider(
+                      //     color: Color.fromRGBO(0, 0, 0, 1).withOpacity(0.3),
+                      //     height: 0.5,
+                      //   ),
+                      // ),
+                      Divider(),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -427,7 +454,7 @@ class _OrderDetailsState extends State<OrderDetails> {
                 ),
               ),
               SizedBox(
-                height: 20,
+                height: MediaQuery.of(context).size.height * 0.01,
               ),
             ],
           ),

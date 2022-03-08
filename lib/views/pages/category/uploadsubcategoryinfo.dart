@@ -248,7 +248,7 @@ class _SubCategoryInfoState extends State<SubCategoryInfo> {
                             _showPicker(context);
                           },
                           child: Container(
-                              height: 30,
+                              height: MediaQuery.of(context).size.height * 0.04,
                               decoration: BoxDecoration(
                                   color: Colors.red,
                                   border: Border.all(
@@ -262,7 +262,7 @@ class _SubCategoryInfoState extends State<SubCategoryInfo> {
                 ),
               ),
               Container(
-                height: 20,
+                height: MediaQuery.of(context).size.height * 0.04,
                 alignment: Alignment.center,
                 child: Text(
                   "Upload Product Picture",
@@ -275,7 +275,7 @@ class _SubCategoryInfoState extends State<SubCategoryInfo> {
                 ),
               ),
               SizedBox(
-                height: 20,
+                height: MediaQuery.of(context).size.height * 0.04,
               ),
               SingleChildScrollView(
                 child: Container(
@@ -311,7 +311,7 @@ class _SubCategoryInfoState extends State<SubCategoryInfo> {
                           ),
                         ),
                         SizedBox(
-                          height: 10,
+                          height: MediaQuery.of(context).size.height * 0.003,
                         ),
                         Text(
                           "Product Name",
@@ -325,7 +325,7 @@ class _SubCategoryInfoState extends State<SubCategoryInfo> {
                           controller: productName,
                         ),
                         SizedBox(
-                          height: 15,
+                          height: MediaQuery.of(context).size.height * 0.003,
                         ),
                         Text(
                           "Short Discription",
@@ -339,7 +339,7 @@ class _SubCategoryInfoState extends State<SubCategoryInfo> {
                           controller: shortDisc,
                         ),
                         SizedBox(
-                          height: 15,
+                          height: MediaQuery.of(context).size.height * 0.003,
                         ),
                         Text(
                           "Original Price",
@@ -357,7 +357,7 @@ class _SubCategoryInfoState extends State<SubCategoryInfo> {
                           ],
                         ),
                         SizedBox(
-                          height: 15,
+                          height: MediaQuery.of(context).size.height * 0.003,
                         ),
                         Text(
                           "Description",
@@ -373,7 +373,7 @@ class _SubCategoryInfoState extends State<SubCategoryInfo> {
                           maxLines: 6,
                         ),
                         SizedBox(
-                          height: 15,
+                          height: MediaQuery.of(context).size.height * 0.009,
                         ),
                         CustomTextButton(
                           buttonName: 'Update Profile',
