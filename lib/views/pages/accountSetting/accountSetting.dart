@@ -373,7 +373,7 @@ class _AccountSettingState extends State<AccountSetting> {
           ),
         ),
       ),
-      bottomNavigationBar: TabBarViewData(),
+      // bottomNavigationBar: TabBarViewData(),
     );
   }
 }

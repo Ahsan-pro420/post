@@ -185,7 +185,7 @@ class _OrderPageState extends State<OrderPage> with TickerProviderStateMixin {
           ],
         ),
       ),
-      bottomNavigationBar: TabBarViewData(),
+      // bottomNavigationBar: TabBarViewData(),
     );
   }
 }

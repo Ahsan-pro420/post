@@ -13,6 +13,7 @@ import 'package:restaurant_app/Theme/Theme.dart';
 import 'package:restaurant_app/utills/Displaywidth.dart';
 import 'package:restaurant_app/utills/customtextbutton.dart';
 import 'package:restaurant_app/views/pages/HomeScreen/orders.dart';
+import 'package:restaurant_app/views/pages/calling_screen.dart';
 import 'package:restaurant_app/views/pages/signin/sign_in_page.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -37,6 +38,7 @@ class _OTPSCREENState extends State<OTPSCREEN> {
   final TextEditingController _pin4Controller = TextEditingController();
   final TextEditingController _pin5Controller = TextEditingController();
   final TextEditingController _pin6Controller = TextEditingController();
+
   final FocusNode _pinPutFocusNode = FocusNode();
   // FirebaseMessaging _firebaseMessaging = FirebaseMessaging.instance;
   String? _firebaseToken;
@@ -498,12 +500,28 @@ class _OTPSCREENState extends State<OTPSCREEN> {
                                 width: 5,
                               ),
 
-                              TextButton(
-                                style: ElevatedButton.styleFrom(
-                                    // onPrimary: Colors.amber,
-                                    primary: Color.fromARGB(166, 255, 255, 255),
-                                    onPrimary: Colors.red,
-                                    animationDuration: Duration(seconds: 5)),
+                              ElevatedButton(
+                                style: ButtonStyle(
+                                  backgroundColor:
+                                      MaterialStateProperty.resolveWith<Color>(
+                                    (Set<MaterialState> states) {
+                                      if (states
+                                          .contains(MaterialState.pressed))
+                                        return Colors.blue;
+                                      else if (states
+                                          .contains(MaterialState.disabled))
+                                        return Colors.green;
+                                      return Colors
+                                          .black; // Use the component's default.
+                                    },
+                                  ),
+
+                                  // ElevatedButton.styleFrom(
+                                  //     // onPrimary: Colors.amber,
+                                  //     primary: Color.fromARGB(166, 255, 255, 255),
+                                  //     onPrimary: Colors.red,
+                                  //     animationDuration: Duration(seconds: 5),
+                                ),
 
                                 onPressed: resendtimer
                                     ? (() => setState(() {
@@ -565,7 +583,7 @@ class _OTPSCREENState extends State<OTPSCREEN> {
                               Navigator.pushAndRemoveUntil(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => OrderPage()),
+                                      builder: (context) => CallingScreen()),
                                   (route) => false);
                             }
                           });

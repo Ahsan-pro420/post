@@ -457,7 +457,7 @@ class _EarningState extends State<Earning> {
           ),
         ),
       ),
-      bottomNavigationBar: TabBarViewData(),
+      // bottomNavigationBar: TabBarViewData(),
     );
   }
 }

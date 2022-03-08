@@ -231,7 +231,6 @@ class _OrderDetailsState extends State<OrderDetails> {
                           ),
                         ),
                       ),
-<<<<<<< HEAD
                       SizedBox(
                         height: MediaQuery.of(context).size.height * 0.01,
                       ),
@@ -247,19 +246,6 @@ class _OrderDetailsState extends State<OrderDetails> {
                             fontWeight: FontWeight.w400,
                             fontSize: 15,
                             color: Color.fromRGBO(0, 0, 0, 1),
-=======
-                      Padding(
-                        padding:
-                            const EdgeInsets.only(bottom: 16.0, right: 25.0),
-                        child: Text(
-                          widget.cus_addresss,
-                          style: GoogleFonts.ubuntu(
-                            textStyle: TextStyle(
-                              fontWeight: FontWeight.w400,
-                              fontSize: 15,
-                              color: Color.fromRGBO(0, 0, 0, 1),
-                            ),
->>>>>>> ea13d84176704906bd7fa7e20f553b6e903b7aee
                           ),
                         ),
                       ),
@@ -418,7 +404,7 @@ class _OrderDetailsState extends State<OrderDetails> {
           ),
         ),
       ),
-      bottomNavigationBar: TabBarViewData(),
+      //bottomNavigationBar: TabBarViewData(),
     );
   }
 }

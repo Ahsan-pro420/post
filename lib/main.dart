@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:restaurant_app/main_2.dart';
 import 'package:restaurant_app/views/pages/HomeScreen/orders.dart';
 import 'package:restaurant_app/views/pages/firstScreen/splash_screen.dart';
+import 'package:restaurant_app/views/pages/otp_screen/otp_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 void main() async {
@@ -14,9 +15,9 @@ void main() async {
   print(user);
   runApp(MaterialApp(
     title: 'Restaurant App',
-    //home: Main_2(),
-
-    home: OrderPage(),
+    home: Main_2(),
+    //home: OTPSCREEN(""),
+    //home: OrderPage(),
     // home: FirstScreen(),
     debugShowCheckedModeBanner: false,
   ));

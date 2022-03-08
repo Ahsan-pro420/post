@@ -89,94 +89,107 @@ class _CategoryPageState extends State<CategoryPage> {
               ),
               // category list
               Container(
+                padding: const EdgeInsets.only(left: 8.0, right: 10),
                 margin: EdgeInsets.symmetric(vertical: 20.0, horizontal: 0),
-                height: displayHeight(context) * 0.05,
-                child: new ListView(
-                  scrollDirection: Axis.horizontal,
-                  children: <Widget>[
-                    Container(
-                      alignment: Alignment.center,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                        color: Color.fromRGBO(0, 0, 0, 1),
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.only(left: 8.0, right: 10),
-                        child: Text(
-                          "Category1",
-                          style: GoogleFonts.ubuntu(
-                              textStyle: TextStyle(
-                            color: Colors.white,
-                          )),
-                        ),
-                      ),
-                    ),
-                    SizedBox(
-                      width: 5,
-                    ),
-                    Container(
-                      alignment: Alignment.center,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                        color: Color.fromRGBO(255, 255, 255, 1),
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.only(left: 8.0, right: 10),
-                        child: Text(
-                          "Category2",
-                          style: GoogleFonts.ubuntu(
-                              textStyle: TextStyle(
-                            color: Colors.black,
-                          )),
-                        ),
-                      ),
-                    ),
-                    SizedBox(
-                      width: 5,
-                    ),
-                    Container(
-                      alignment: Alignment.center,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                        color: Color.fromRGBO(255, 255, 255, 1),
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.only(left: 8.0, right: 10),
-                        child: Text(
-                          "Category3",
-                          style: GoogleFonts.ubuntu(
-                              textStyle: TextStyle(
-                            color: Colors.black,
-                          )),
-                        ),
-                      ),
-                    ),
-                    SizedBox(
-                      width: 5,
-                    ),
-                    Container(
-                      alignment: Alignment.center,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                        color: Color.fromRGBO(255, 255, 255, 1),
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.only(left: 8.0, right: 10),
-                        child: Text(
-                          "Category4",
-                          style: GoogleFonts.ubuntu(
-                              textStyle: TextStyle(
-                            color: Colors.black,
-                          )),
-                        ),
-                      ),
-                    ),
-                    SizedBox(
-                      width: 5,
-                    ),
-                  ],
-                ),
+                height: 25,
+                child: ListView.builder(
+                    shrinkWrap: true,
+                    scrollDirection: Axis.horizontal,
+                    itemCount: 10,
+                    itemBuilder: ((context, index) {
+                      return sub_category_tile1(context);
+                    })),
               ),
+
+              // Container(
+              //   margin: EdgeInsets.symmetric(vertical: 20.0, horizontal: 0),
+              //   height: displayHeight(context) * 0.05,
+              //   child: new ListView(
+              //     scrollDirection: Axis.horizontal,
+              //     children: <Widget>[
+              //       Container(
+              //         alignment: Alignment.center,
+              //         decoration: BoxDecoration(
+              //           borderRadius: BorderRadius.circular(20),
+              //           color: Color.fromRGBO(0, 0, 0, 1),
+              //         ),
+              //         child: Padding(
+              //           padding: const EdgeInsets.only(left: 8.0, right: 10),
+              //           child: Text(
+              //             "Category1",
+              //             style: GoogleFonts.ubuntu(
+              //                 textStyle: TextStyle(
+              //               color: Colors.white,
+              //             )),
+              //           ),
+              //         ),
+              //       ),
+              //       SizedBox(
+              //         width: 5,
+              //       ),
+              //       Container(
+              //         alignment: Alignment.center,
+              //         decoration: BoxDecoration(
+              //           borderRadius: BorderRadius.circular(20),
+              //           color: Color.fromRGBO(255, 255, 255, 1),
+              //         ),
+              //         child: Padding(
+              //           padding: const EdgeInsets.only(left: 8.0, right: 10),
+              //           child: Text(
+              //             "Category2",
+              //             style: GoogleFonts.ubuntu(
+              //                 textStyle: TextStyle(
+              //               color: Colors.black,
+              //             )),
+              //           ),
+              //         ),
+              //       ),
+              //       SizedBox(
+              //         width: 5,
+              //       ),
+              //       Container(
+              //         alignment: Alignment.center,
+              //         decoration: BoxDecoration(
+              //           borderRadius: BorderRadius.circular(20),
+              //           color: Color.fromRGBO(255, 255, 255, 1),
+              //         ),
+              //         child: Padding(
+              //           padding: const EdgeInsets.only(left: 8.0, right: 10),
+              //           child: Text(
+              //             "Category3",
+              //             style: GoogleFonts.ubuntu(
+              //                 textStyle: TextStyle(
+              //               color: Colors.black,
+              //             )),
+              //           ),
+              //         ),
+              //       ),
+              //       SizedBox(
+              //         width: 5,
+              //       ),
+              //       Container(
+              //         alignment: Alignment.center,
+              //         decoration: BoxDecoration(
+              //           borderRadius: BorderRadius.circular(20),
+              //           color: Color.fromRGBO(255, 255, 255, 1),
+              //         ),
+              //         child: Padding(
+              //           padding: const EdgeInsets.only(left: 8.0, right: 10),
+              //           child: Text(
+              //             "Category4",
+              //             style: GoogleFonts.ubuntu(
+              //                 textStyle: TextStyle(
+              //               color: Colors.black,
+              //             )),
+              //           ),
+              //         ),
+              //       ),
+              //       SizedBox(
+              //         width: 5,
+              //       ),
+              //     ],
+              //   ),
+              // ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -251,14 +264,14 @@ class _CategoryPageState extends State<CategoryPage> {
                         mainAxisSpacing: 20),
                     itemCount: 10,
                     itemBuilder: (BuildContext ctx, index) {
-                      return Sub_Category_tile(context);
+                      return Sub_Category_tile2(context);
                     }),
               ),
             ],
           ),
         ),
       ),
-      bottomNavigationBar: TabBarViewData(),
+      //bottomNavigationBar: TabBarViewData(),
     );
   }
 }

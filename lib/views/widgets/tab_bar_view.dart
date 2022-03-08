@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:restaurant_app/views/pages/HomeScreen/orders.dart';
 import 'package:restaurant_app/views/pages/accountSetting/accountSetting.dart';
 import 'package:restaurant_app/views/pages/category/categoryPage.dart';
 import 'package:restaurant_app/views/pages/earning/earning.dart';
@@ -29,12 +30,14 @@ class _TabBarViewDataState extends State<TabBarViewData> {
           topRight: Radius.circular(30.0),
         ),
         child: BottomNavigationBar(
+          type: BottomNavigationBarType.shifting,
+          selectedItemColor: Colors.deepOrangeAccent,
           showSelectedLabels: false,
           showUnselectedLabels: false,
           unselectedIconTheme: IconThemeData(
-            color: Colors.black,
-          ),
-          unselectedItemColor: Colors.deepOrangeAccent,
+              //color: Colors.black,
+              ),
+          unselectedItemColor: Colors.grey,
           items: [
             BottomNavigationBarItem(
               label: "",
@@ -48,7 +51,7 @@ class _TabBarViewDataState extends State<TabBarViewData> {
                 },
                 icon: ImageIcon(
                   AssetImage("assets/images/Wallet.png"),
-                  color: Colors.red,
+                  // color: Colors.red,
                 ),
               ),
             ),
@@ -59,12 +62,12 @@ class _TabBarViewDataState extends State<TabBarViewData> {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => OrdersHistory(),
+                          builder: (context) => OrderPage(),
                         ));
                   },
                   icon: ImageIcon(
                     AssetImage("assets/images/timeCircle.png"),
-                    color: Colors.red,
+                    // color: Colors.red,
                   ),
                 )),
             BottomNavigationBarItem(
@@ -79,7 +82,7 @@ class _TabBarViewDataState extends State<TabBarViewData> {
                   },
                   icon: ImageIcon(
                     AssetImage("assets/images/Category.png"),
-                    color: Colors.red,
+                    color: Colors.black,
                   ),
                 )),
             BottomNavigationBarItem(
@@ -94,47 +97,10 @@ class _TabBarViewDataState extends State<TabBarViewData> {
                   },
                   icon: ImageIcon(
                     AssetImage("assets/images/Setting.png"),
-                    color: Colors.red,
+                    //color: Colors.red,
                   ),
                 )),
           ],
-
-          // items: const <BottomNavigationBarItem>[
-          //   // BottomNavigationBarItem(
-          //   //   icon: ImageIcon(
-          //   //     AssetImage("assets/images/Home.png"),
-          //   //     color: Colors.red,
-          //   //   ),
-          //   //   label: '',
-          //   // ),
-          //   BottomNavigationBarItem(
-          //     icon: ImageIcon(
-          //       AssetImage("assets/images/Wallet.png"),
-          //       color: Colors.black,
-          //     ),
-          //     label: '',
-          //   ),
-
-          //   BottomNavigationBarItem(
-          //     icon: ImageIcon(
-          //       AssetImage("assets/images/foodimages/timeicon.png"),
-          //     ),
-          //     label: '',
-          //   ),
-          //   BottomNavigationBarItem(
-          //     icon: ImageIcon(
-          //       AssetImage("assets/images/Category.png"),
-          //       color: Colors.black,
-          //     ),
-          //     label: '',
-          //   ),
-          //   BottomNavigationBarItem(
-          //     icon: ImageIcon(
-          //       AssetImage("assets/images/Setting.png"),
-          //     ),
-          //     label: '',
-          //   ),
-          // ],
         ),
       ),
     );
